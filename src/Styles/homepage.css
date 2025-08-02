@@ -1,0 +1,19 @@
+.homepge{
+    display: flex;
+  justify-content: center;     /* horizontal centering */
+  align-items: center;         /* vertical centering */
+  height: 100vh;               /* full viewport height */
+  width: 100vw;                /* full viewport width */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+
+}
+.H3-container{
+    display: flex;
+    background-color: rgb(126, 42, 165);
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
