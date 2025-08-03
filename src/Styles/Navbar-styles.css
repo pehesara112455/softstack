@@ -6,8 +6,9 @@
   background-color: maroon;
   padding: 0 20px;
   height: 60px;
+  width: 100%;
   color: white;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   
@@ -16,12 +17,17 @@
   
   
 }
-
-.navbar {
-  width: 95%; 
-  padding: 0.5rem 1rem;
-  
+@media(max-width: 768px){
+  .navbar{
+    position: fixed;
+    width: 100%;
+    height: 70px;
+  }
 }
+
+
+
+
 
 
 @media (min-width: 768px) {
@@ -34,7 +40,7 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
   position: relative;
   left: 3rem;
@@ -46,7 +52,8 @@
   font-size: 3.5rem;
   font-weight: bold;
   position: relative;
-  left: 10rem;
+  left: 5rem;
+
   }
 }
   
@@ -57,7 +64,7 @@
   font-size: 1.8rem;
   cursor: pointer;
   position: relative;
-  right: 20rem;
+  right: 21rem;
   top: -2px;
 }
 
@@ -65,6 +72,9 @@
   display: flex;
   list-style: none;
   gap: 70px;
+  position: absolute;
+  left: 45%;
+  
 }
 
 .nav-links li:not(:last-child)::after {
@@ -105,7 +115,7 @@
 
   .nav-links {
     position: absolute;
-    top: 60px;
+    top: 54px;
     left: -5px;
     height: 100vh;
     background-color: maroon;
@@ -125,5 +135,21 @@
 
   .nav-links li::after {
     content: none;
+  }
+}
+.navbar-logo{
+  position: absolute;
+  width: 60px;
+  height: auto;
+  left: 20px;
+  
+
+}
+@media(max-width: 768px){
+  .navbar-logo{
+    position: absolute;
+  width: 40px;
+  height: auto;
+  left: 75%;
   }
 }

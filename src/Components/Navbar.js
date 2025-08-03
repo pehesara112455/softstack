@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import '../Styles/Navbar-styles.css';
+import CECLOGO from '../Resousers/CECLOGO.jpg';
+
 
 
 function Navbar(){
@@ -10,6 +12,8 @@ function Navbar(){
     return (
     <nav className="navbar">
       <div className="logo">C E C</div>
+      <img src={CECLOGO} alt="CECLogo" className='navbar-logo' />
+
       <div className="hamburger" onClick={toggleMenu}>☰</div>
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
         <li><a href="#">Home</a></li>
