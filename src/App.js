@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import Navbar from './Components/Navbar';
-//import HomePage from './Components/HomePage';
-//import Signin from './Components/Signin';
-import Hompage from'./Components/Hompage';
+import Hompage from './Components/Hompage';
+import Footer from './Components/Footer';
 
 function App() {
   return (
     <Router>
-      
-      <Routes>
-        <Route path="/" element={<Hompage />} />
-        {/* Add other pages here */}
-      </Routes>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Hompage />} />
+          {/* Add more routes here if needed */}
+        </Routes>
+      <Footer/>{}
+      </div>
     </Router>
   );
 }

@@ -1,0 +1,59 @@
+import React, { useState, useEffect } from 'react';
+import '../Styles/Slideshowstyle.css';
+import cecimage1 from '../Resousers/cecimage1.jpg';
+import cecimage2 from     '../Resousers/cecimage2.jpg';
+import cecimage3 from     '../Resousers/cecimage3.jpg';
+
+
+
+
+function Slideshow() {
+  const images = [
+        cecimage1,
+        cecimage2,
+        cecimage3
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Function to go to next image
+  function goToNext() {
+    setCurrentIndex(function(prevIndex) {
+      return (prevIndex + 1) % images.length;
+    });
+  }
+
+  // Function to go to previous image
+  function goToPrev() {
+    setCurrentIndex(function(prevIndex) {
+      return (prevIndex - 1 + images.length) % images.length;
+    });
+  }
+
+  // Auto-slide effect
+  useEffect(function() {
+    const interval = setInterval(function() {
+      goToNext();
+    }, 3000);
+
+    return function() {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div className="slideshow-container">
+      <img
+        src={images[currentIndex]}
+        alt="slide"
+        className="slideshow-image"
+      />
+      <div className="slideshow-buttons">
+        <button onClick={goToPrev}>Prev</button>
+        <button onClick={goToNext}>Next</button>
+      </div>
+    </div>
+  );
+}
+
+export default Slideshow;
