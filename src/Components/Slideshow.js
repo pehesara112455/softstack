@@ -34,7 +34,7 @@ function Slideshow() {
   useEffect(function() {
     const interval = setInterval(function() {
       goToNext();
-    }, 3000);
+    }, 10000);
 
     return function() {
       clearInterval(interval);
@@ -49,8 +49,33 @@ function Slideshow() {
         className="slideshow-image"
       />
       <div className="slideshow-buttons">
-        <button onClick={goToPrev}>Prev</button>
-        <button onClick={goToNext}>Next</button>
+        <button onClick={goToPrev} className="arrow-button">
+  <svg
+    width="80"
+    height="80"
+    viewBox="-307.2 -307.2 1638.4 1638.4"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#ffffff"
+    stroke="#ffffff"
+    strokeWidth="42"
+  >
+    <path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000" />
+  </svg>
+      </button>
+      <button onClick={goToNext} className="arrow-button">
+        <svg
+          width="80"
+          height="80"
+          viewBox="-307.2 -307.2 1638.4 1638.4"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#ffffff"
+          stroke="#ffffff"
+          strokeWidth="42"
+          style={{ transform: 'rotate(180deg)' }}
+          >
+          <path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#000000" />
+        </svg>
+      </button>  
       </div>
     </div>
   );
