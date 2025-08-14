@@ -42,4 +42,30 @@
 
 .arrow-button:hover {
   transform: scale(1.1);
+
+}
+@media (max-width: 768px){
+  .slideshow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  height: 600px;
+  width:100vw;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  justify-content: space-between;
+
+  font-family: sans-serif;
+  max-width: 100vw;
+  
+  
+  
+  
+}
+.slideshow-buttons {
+  position: absolute;
+  bottom: 350px;
+  display: flex;
+  gap:10rem;
+}
 }
