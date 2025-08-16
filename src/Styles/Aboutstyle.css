@@ -181,3 +181,82 @@ height: auto;
   padding: 0px;
   box-sizing: border-box;
 }
+@media screen and (max-width: 1024px) {
+  .content,
+  .columns-container,
+  .left-side,
+  .right-side,
+  .left-side2,
+  .right-side2 {
+    flex-direction: column;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .left-side,
+  .right-side,
+  .left-side2,
+  .right-side2 {
+    padding: 0px;
+  }
+
+  .IMG1,
+  .IMG2,
+  .IMG3,
+  .IMG4 {
+    padding-top: 0%;
+    height: auto;
+  }
+
+  .mission-section,
+  .Vision,
+  .philosophy-section,
+  .description,
+  .todaycec {
+    font-size: 15px;
+    padding: 0px;
+  }
+
+  .mission-section h2,
+  .Vision h2,
+  .philosophy-section h2 {
+    font-size: 20px;
+  }
+
+  .Vision h2 {
+    padding-top: 20px;
+  }
+
+  .description p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mission-section,
+  .Vision,
+  .philosophy-section,
+  .description,
+  .todaycec {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .mission-section h2,
+  .Vision h2,
+  .philosophy-section h2 {
+    font-size: 18px;
+  }
+
+  .description p {
+    font-size: 14px;
+  }
+
+  .IMG1,
+  .IMG2,
+  .IMG3,
+  .IMG4 {
+    padding-top: 0%;
+    height: auto;
+  }
+}

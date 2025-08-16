@@ -111,12 +111,21 @@ body {
     width: 100%;
   }
   .cec1{
-    position: absolute;
+    position: inherit;
+    border-top: 2px solid white;
+    padding-top: 0%;
     bottom: -110rem;
     left: 1rem;
-    flex: 1 1 100%;
-    margin: 0rem 0;
+    flex: 1 ;
+    margin-top: 20px;
+
   }
+    
+.cec1 p
+{
+  padding-top:1% ;
+  line-height: 10%;
+}
   .footer {
   width: 100%;
   height: 90vh;
