@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Hompage from './Components/Hompage';
 import Footer from './Components/Footer';
 
-import AdminNav from './Components/Admin/AdminNav'; // Import the sidebar nav
+import Reservation from './Components/Admin/Reservation'; 
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Hompage />} />
-          <Route path="/admin" element={<AdminNav />} />
+          <Route path="/reservation" element={<Reservation />} />
           {/* Add more routes here if needed */}
         </Routes>
       <Footer/>{}
