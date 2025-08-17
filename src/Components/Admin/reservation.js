@@ -3,158 +3,202 @@ import { db } from '../../firebase';
 import { collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import '../../Styles/Adminstyles/Reservationstyle.css';
 import AdminNav from './AdminNav';
+import AddReservation from './AddReservation';
 
 function Reservation() {
+  // State declarations
   const [reservations, setReservations] = useState([]);
   const [editingAdvanceId, setEditingAdvanceId] = useState(null);
   const [editingAdvanceValue, setEditingAdvanceValue] = useState('');
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState('pending');
+  const [showAdd, setShowAdd] = useState(false);
 
-  // Fetch reservations
+  // Fetch reservations on mount
   useEffect(() => {
     fetchReservations();
   }, []);
+
   const fetchReservations = async () => {
     const snap = await getDocs(collection(db, 'reservations'));
     setReservations(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
   };
 
-  // Advance editing and saving (inline)
+  // Inline advance editing and saving
   const handleAdvanceEdit = (id, value) => {
     setEditingAdvanceId(id);
     setEditingAdvanceValue(value);
   };
+
   const handleAdvanceBlur = async (id) => {
+    if (editingAdvanceValue === '') {
+      setEditingAdvanceId(null);
+      return;
+    }
     await updateDoc(doc(db, 'reservations', id), { advance: Number(editingAdvanceValue) });
     setEditingAdvanceId(null);
     fetchReservations();
   };
 
-  // Status editing and saving (inline)
+  // Inline status editing and saving
   const handleStatusChange = async (id, newStatus) => {
     await updateDoc(doc(db, 'reservations', id), { status: newStatus });
     fetchReservations();
   };
 
-  // Delete
+  // Delete reservation
   const handleDelete = async (id) => {
-    await deleteDoc(doc(db, 'reservations', id));
-    fetchReservations();
+    if (window.confirm('Are you sure you want to delete this reservation?')) {
+      await deleteDoc(doc(db, 'reservations', id));
+      fetchReservations();
+    }
   };
 
-  // Edit
+  // Edit placeholder
   const handleEdit = (id) => {
     alert(`Edit reservation: ${id}`);
+    // Implement your edit logic or navigation here
   };
 
-  // View as PDF (placeholder)
+  // View as PDF placeholder
   const handleViewPDF = (r) => {
     alert(`View reservation as PDF: ${r.id}`);
+    // Implement PDF export functionality here
   };
 
-  // Filter and Search
+  // Filter and search reservations
   const filteredReservations = reservations.filter(r =>
     r.status === filterStatus &&
     (search === '' || (r.client?.companyName ?? '').toLowerCase().includes(search.toLowerCase()))
   );
 
   return (
-    <div className="admin-layout">
-      {/* Left Side */}
+    <div className="admin-layout" style={{ display: 'flex', minHeight: '100vh' }}>
+      {/* Sidebar */}
       <AdminNav />
 
-      {/* Right Side */}
-      <div className="reservation-container">
-        <h2>RESERVATIONS</h2>
-        <div className="reservation-actions">
-          <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)}>
-            <option value="pending">Pending</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
-          <input
-            type="search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search"
-            className="reservation-search"
-          />
-          <button className="add-btn">+ ADD NEW</button>
-        </div>
+      {/* Main content */}
+      <div style={{ flex: 1, padding: '2rem' }}>
+        {showAdd ? (
+          <AddReservation onClose={() => {
+            setShowAdd(false);
+            fetchReservations();
+          }} />
+        ) : (
+          <>
+            <h2 style={{ color: '#7a1818', marginBottom: '1.5rem' }}>RESERVATIONS</h2>
 
-        <table className="reservation-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Client Name</th>
-              <th>Contact</th>
-              <th>Date</th>
-              <th>Advance</th>
-              <th>Total Amount</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredReservations.map(r => (
-              <tr key={r.id}>
-                <td>{r.id}</td>
-                <td>{r.client?.companyName}</td>
-                <td>{r.client?.contact}</td>
-                <td>{r.client?.dateFrom} - {r.client?.dateTo}</td>
-                <td>
-                  {editingAdvanceId === r.id ? (
-                    <input
-                      className="advance-input"
-                      type="number"
-                      value={editingAdvanceValue}
-                      onChange={e => setEditingAdvanceValue(e.target.value)}
-                      onBlur={() => handleAdvanceBlur(r.id)}
-                      autoFocus
-                    />
-                  ) : (
-                    <input
-                      className="advance-input"
-                      type="number"
-                      value={r.advance || ''}
-                      onFocus={() => handleAdvanceEdit(r.id, r.advance || '')}
-                      readOnly
-                    />
-                  )}
-                </td>
-                <td>{r.totalAmount}</td>
-                <td>
-                  <select
-                    value={r.status}
-                    onChange={e => handleStatusChange(r.id, e.target.value)}
-                    className="status-select"
-                  >
-                    <option value="pending">Pending</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="cancelled">Cancelled</option>
-                  </select>
-                </td>
-                <td className="action-cell">
-                  <button
-                    className="action-btn edit-btn"
-                    title="Edit"
-                    onClick={() => handleEdit(r.id)}>✏️</button>
-                  <button
-                    className="action-btn delete-btn"
-                    title="Delete"
-                    onClick={() => handleDelete(r.id)}>🗑️</button>
-                  <button
-                    className="action-btn pdf-btn"
-                    title="View as PDF"
-                    onClick={() => handleViewPDF(r)}>View</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            <div className="reservation-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={{ padding: '0.5rem', borderRadius: '5px' }}>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+
+              <input
+                type="search"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                placeholder="Search"
+                style={{ padding: '0.5rem', flexGrow: 1, borderRadius: '5px', border: '1px solid #ccc' }}
+              />
+
+              <button className="add-btn" onClick={() => setShowAdd(true)} style={{
+                backgroundColor: '#7a1818',
+                color: '#fff',
+                border: 'none',
+                padding: '0.6rem 1.2rem',
+                borderRadius: '5px',
+                cursor: 'pointer'
+              }}>
+                + ADD NEW
+              </button>
+            </div>
+
+            <table className="reservation-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Client Name</th>
+                  <th>Contact</th>
+                  <th>Date</th>
+                  <th>Advance</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredReservations.map(r => (
+                  <tr key={r.id} style={{ borderBottom: '1.5px solid #eaeaea' }}>
+                    <td>{r.id}</td>
+                    <td>{r.client?.companyName}</td>
+                    <td>{r.client?.contact}</td>
+                    <td>{r.client?.dateFrom} - {r.client?.dateTo}</td>
+                    <td>
+                      {editingAdvanceId === r.id ? (
+                        <input
+                          className="advance-input"
+                          type="number"
+                          value={editingAdvanceValue}
+                          onChange={e => setEditingAdvanceValue(e.target.value)}
+                          onBlur={() => handleAdvanceBlur(r.id)}
+                          autoFocus
+                          style={{ width: '80px', padding: '0.25rem' }}
+                        />
+                      ) : (
+                        <input
+                          className="advance-input"
+                          type="number"
+                          value={r.advance || ''}
+                          onFocus={() => handleAdvanceEdit(r.id, r.advance || '')}
+                          readOnly
+                          style={{ width: '80px', border: 'none', background: 'transparent', textAlign: 'center' }}
+                        />
+                      )}
+                    </td>
+                    <td>{r.totalAmount}</td>
+                    <td>
+                      <select
+                        value={r.status}
+                        onChange={e => handleStatusChange(r.id, e.target.value)}
+                        className="status-select"
+                        style={{ padding: '0.25rem', borderRadius: '4px' }}
+                      >
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="cancelled">Cancelled</option>
+                      </select>
+                    </td>
+                    <td className="action-cell" style={{ display: 'flex', gap: '0.5rem' }}>
+                      <button
+                        className="action-btn edit-btn"
+                        title="Edit"
+                        onClick={() => handleEdit(r.id)}
+                        style={{ cursor: 'pointer' }}
+                      >✏️</button>
+                      <button
+                        className="action-btn delete-btn"
+                        title="Delete"
+                        onClick={() => handleDelete(r.id)}
+                        style={{ cursor: 'pointer' }}
+                      >🗑️</button>
+                      <button
+                        className="action-btn pdf-btn"
+                        title="View as PDF"
+                        onClick={() => handleViewPDF(r)}
+                        style={{ cursor: 'pointer' }}
+                      >View</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
       </div>
     </div>
   );
 }
+
 export default Reservation;
