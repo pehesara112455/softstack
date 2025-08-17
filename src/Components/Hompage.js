@@ -7,8 +7,7 @@ import Slideshow from './Slideshow';
 import H1 from '../Resousers/H1.png';
 import H2 from '../Resousers/H2.png';
 import H3 from '../Resousers/H3.png';
-
-
+import Footer from './Footer'; // Import Footer component
 
 
 
@@ -41,7 +40,7 @@ function Hompage(){
                 </div>
             </div>
           
-           
+            <Footer/>
            
            
           
