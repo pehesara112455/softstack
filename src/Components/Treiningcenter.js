@@ -32,25 +32,25 @@ function Treiningcentre() {
             className={`buttonss ${activeButton === 0 ? 'active' : ''}`}
             onClick={() => handleClick(0)}
           >
-            Item 1
+            Halls
           </button>
           <button
             className={`buttonss ${activeButton === 1 ? 'active' : ''}`}
             onClick={() => handleClick(1)}
           >
-            Item 2
+            Rooms
           </button>
           <button
             className={`buttonss ${activeButton === 2 ? 'active' : ''}`}
             onClick={() => handleClick(2)}
           >
-            Item 3
+            Other facilities 
           </button>
           <button
             className={`buttonss ${activeButton === 3 ? 'active' : ''}`}
             onClick={() => handleClick(3)}
           >
-            Item 4
+            Menus
           </button>
         </div>
         <div className="content-container">
@@ -64,24 +64,36 @@ function Treiningcentre() {
           <div className="carts">
             
             <div className="cart1">
+              <span className="available-label">Available</span>
+
               <img src={hall1} alt="hall1" className="Hall1"/>
               <div className="lables1">
                 <label htmlFor="Hallname" className="Hall1lable">HALL No.1</label>
                 <label htmlFor="Hallname" className="Hall1time">8.00 am - 5.00 pm</label>
                 <div className="icons">
                   <div className="chair">
-                    
+                    <img src={chair}alt="chair"className="chairicon"/>
                   </div>
                   <div className="Ac">
-                    
+                    <img src={Ac} alt="Ac"className="Acicon"/>
                   </div>
                   <div className="wifi">
-                    
+                    <img src={wifi} alt="wifi"className="wifiicon"/>
                   </div>
+              </div>
+              <div className="lables2">
+                <label htmlFor="Hallname" className="Hall1lable1">110 Persons</label>
+                <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
+                <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
+
               </div>
               </div>
               
             </div>
+            
+            
+           
+            
             
              
           </div> 
