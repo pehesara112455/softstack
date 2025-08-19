@@ -9,7 +9,13 @@ function App() {
     <Router>
       <div className="app-container">
         {<Routes>
-          <Route path="/" element={<Hall />} />
+          <Route path="/" element={<Hompage />} />
+          <Route path="/About" element={<About />} />
+
+          <Route path="/Treiningcenter" element={<Treiningcenter />} />
+
+          
+
           
         </Routes>}
       
