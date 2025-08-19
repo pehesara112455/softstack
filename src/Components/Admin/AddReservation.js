@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import '../../Styles/Adminstyles/AddReservationstyle.css';
+import { getDateList } from '../../utils/getDateList'; // Adjust path as needed
 
 function AddReservation({ onClose }) {
   // Step switching
@@ -9,10 +10,10 @@ function AddReservation({ onClose }) {
 
   // Client form state
   const [client, setClient] = useState({ companyName: '', contact: '', dateFrom: '', dateTo: '' });
-  
-  // Rooms form state
+
+  // Rooms form state (note newRoom has dateFrom, dateTo)
   const [roomList, setRoomList] = useState([]);
-  const [newRoom, setNewRoom] = useState({ room: '', type: '', qty: '', perUnit: '' });
+  const [newRoom, setNewRoom] = useState({ room: '', type: '', qty: '', perUnit: '', dateFrom: '', dateTo: '' });
 
   // Meals form state
   const [mealList, setMealList] = useState([]);
@@ -22,11 +23,19 @@ function AddReservation({ onClose }) {
   const [itemList, setItemList] = useState([]);
   const [newItem, setNewItem] = useState({ item: '', description: '', amount: '' });
 
-  // Utility functions
+  // Utility functions for adding/removing
   const addRoom = () => {
-    if (!newRoom.room && (!newRoom.type || !newRoom.qty || !newRoom.perUnit)) return;
-    setRoomList([...roomList, { ...newRoom }]);
-    setNewRoom({ room: '', type: '', qty: '', perUnit: '' });
+    if (
+      !newRoom.room ||
+      !newRoom.type ||
+      !newRoom.qty ||
+      !newRoom.perUnit ||
+      !newRoom.dateFrom ||
+      !newRoom.dateTo
+    ) return;
+    const dates = getDateList(newRoom.dateFrom, newRoom.dateTo);
+    setRoomList([...roomList, { ...newRoom, dates }]);
+    setNewRoom({ room: '', type: '', qty: '', perUnit: '', dateFrom: '', dateTo: '' });
   };
   const removeRoom = idx => setRoomList(roomList.filter((_, i) => i !== idx));
 
@@ -44,7 +53,7 @@ function AddReservation({ onClose }) {
   };
   const removeItem = idx => setItemList(itemList.filter((_, i) => i !== idx));
 
-  // Total calculation
+  // Total calculation (no change)
   const totalRooms = roomList.reduce((sum, r) => sum + (r.qty * r.perUnit), 0);
   const totalMeals = mealList.reduce((sum, m) => sum + (m.qty * m.amount), 0);
   const totalItems = itemList.reduce((sum, i) => sum + Number(i.amount), 0);
@@ -62,6 +71,8 @@ function AddReservation({ onClose }) {
     });
     if (onClose) onClose();
   };
+
+  
 
   return (
     <div className="add-reservation-layout">
@@ -123,11 +134,31 @@ function AddReservation({ onClose }) {
               value={newRoom.perUnit}
               onChange={e => setNewRoom({ ...newRoom, perUnit: Number(e.target.value) })}
             />
+            <input
+              type="date"
+              placeholder="From"
+              value={newRoom.dateFrom}
+              onChange={e => setNewRoom({ ...newRoom, dateFrom: e.target.value })}
+            />
+            <input
+              type="date"
+              placeholder="To"
+              value={newRoom.dateTo}
+              onChange={e => setNewRoom({ ...newRoom, dateTo: e.target.value })}
+            />
             <button className="add-btn" type="button" onClick={addRoom}>+</button>
           </div>
           <table className="summary-table">
             <thead>
-              <tr><th>Room/Hall</th><th>Type</th><th>Qty</th><th>Per Unit</th><th>Total Amount</th><th></th></tr>
+              <tr>
+                <th>Room/Hall</th>
+                <th>Type</th>
+                <th>Qty</th>
+                <th>Per Unit</th>
+                <th>Total Amount</th>
+                <th>Date Range</th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
               {roomList.map((r, idx) => (
@@ -137,6 +168,7 @@ function AddReservation({ onClose }) {
                   <td>{r.qty}</td>
                   <td>{r.perUnit}</td>
                   <td>{r.qty * r.perUnit}</td>
+                  <td>{r.dateFrom} - {r.dateTo}</td>
                   <td><button type="button" className="del-btn" onClick={() => removeRoom(idx)}>×</button></td>
                 </tr>
               ))}
