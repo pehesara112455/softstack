@@ -4,11 +4,12 @@ import { collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firesto
 import '../../Styles/Adminstyles/addhallsrooms.css';
 import AdminNav from './AdminNav';
 
+
 function AddHallsRooms() {
   const [halls, setHalls] = useState([]);
   const [rooms, setRooms] = useState([]);
-  const [filterHallsStatus, setFilterHallsStatus] = useState('available');
-  const [filterRoomsStatus, setFilterRoomsStatus] = useState('available');
+  const [filterHallsStatus, setFilterHallsStatus] = useState('all');
+  const [filterRoomsStatus, setFilterRoomsStatus] = useState('all');
   const [searchHalls, setSearchHalls] = useState('');
   const [searchRooms, setSearchRooms] = useState('');
 
