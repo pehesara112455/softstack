@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase'; // adjust path as needed
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, orderBy,query  } from 'firebase/firestore';
 import '../../Styles/Adminstyles/ClientDetailsPageStyle.css';
 import AdminNav from './AdminNav';
+import AddClient from './AddClient';
+
 
 function ClientDetailsPage() {
   const [clients, setClients] = useState([]);
   const [search, setSearch] = useState('');
 
   // Fetch clients from Firestore
-  useEffect(() => {
-    async function fetchClients() {
-      const snapshot = await getDocs(collection(db, 'client-details'));
-      setClients(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    }
-    fetchClients();
-  }, []);
+useEffect(() => {
+  const q = query(
+    collection(db, 'client-details'),
+    orderBy('createdAt', 'desc') // newest first
+  );
+  const unsub = onSnapshot(q, (snapshot) => {
+    setClients(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+  });
+  return () => unsub();
+}, []);
 
   // Filter clients by search term
   const filteredClients = clients.filter(
@@ -23,6 +28,10 @@ function ClientDetailsPage() {
       c.companyName?.toLowerCase().includes(search.toLowerCase()) ||
       c.contactPerson?.toLowerCase().includes(search.toLowerCase())
   );
+
+  // Client form state
+  const [client, setClient] = useState({ companyName: '', contact: '', dateFrom: '', dateTo: '' });
+  const [showClientModal, setShowClientModal] = useState(false);
 
   return (
     <div className="client-details-layout">
@@ -43,7 +52,14 @@ function ClientDetailsPage() {
               <span role="img" aria-label="search">🔍</span>
             </button>
           </div>
-          <button className="add-new-btn">ADD NEW</button>
+          <button
+  type="button"
+  className="add-client-btn"
+  onClick={() => setShowClientModal(true)}
+>
+  Add Client
+</button>
+
         </div>
         <table className="client-table">
           <thead>
@@ -83,6 +99,11 @@ function ClientDetailsPage() {
             )}
           </tbody>
         </table>
+                
+        {showClientModal && (
+          <AddClient onClose={() => setShowClientModal(false)} />
+        )}
+
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { db } from '../../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import '../../Styles/Adminstyles/AddReservationstyle.css';
 import { getDateList } from '../../utils/getDateList'; // Adjust path as needed
 import AddClient from './AddClient';
@@ -11,12 +11,13 @@ function AddReservation({ onClose }) {
 
   // Client form state
   const [client, setClient] = useState({ companyName: '', contact: '', dateFrom: '', dateTo: '' });
+  const [showClientModal, setShowClientModal] = useState(false);
+
 
   // Rooms form state (note newRoom has dateFrom, dateTo)
   const [roomList, setRoomList] = useState([]);
   const [newRoom, setNewRoom] = useState({ room: '', type: '', qty: '', perUnit: '', dateFrom: '', dateTo: '' });
 
-  const [showClientModal, setShowClientModal] = useState(false);
 
   // Meals form state
   const [mealList, setMealList] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../Styles/Adminstyles/ClientModalStyle.css'; 
 import { db } from '../../firebase'; 
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp  } from 'firebase/firestore';
 
 
 function ClientModal({ onClose }) {
@@ -29,14 +29,18 @@ function ClientModal({ onClose }) {
     });
   };
 
-  const handleSubmit = async () => {
-  try {
-    await addDoc(collection(db, 'client-details'), form);
-    alert('Client saved successfully!');
-    onClose();
-  } catch (error) {
-    alert('Error saving client: ' + error.message);
-  }
+const handleSubmit = async () => {
+  try {
+    await addDoc(collection(db, 'client-details'), {
+      ...form,
+      createdAt: serverTimestamp()
+    });
+    alert('Client saved successfully!');
+    onClose();
+  } catch (error) {
+    alert('Error saving client: ' + error.message);
+  }
+
 };
 
 
