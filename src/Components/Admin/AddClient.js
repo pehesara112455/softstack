@@ -29,10 +29,16 @@ function ClientModal({ onClose }) {
     });
   };
 
-  const handleSubmit = () => {
-    // Handle save here (DB or parent callback)
-    onClose();
-  };
+  const handleSubmit = async () => {
+  try {
+    await addDoc(collection(db, 'client-details'), form);
+    alert('Client saved successfully!');
+    onClose();
+  } catch (error) {
+    alert('Error saving client: ' + error.message);
+  }
+};
+
 
   return (
     <div className="modal-overlay">
