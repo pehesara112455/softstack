@@ -3,6 +3,7 @@ import { db } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import '../../Styles/Adminstyles/AddReservationstyle.css';
 import { getDateList } from '../../utils/getDateList'; // Adjust path as needed
+import AddClient from './AddClient';
 
 function AddReservation({ onClose }) {
   // Step switching
@@ -14,6 +15,8 @@ function AddReservation({ onClose }) {
   // Rooms form state (note newRoom has dateFrom, dateTo)
   const [roomList, setRoomList] = useState([]);
   const [newRoom, setNewRoom] = useState({ room: '', type: '', qty: '', perUnit: '', dateFrom: '', dateTo: '' });
+
+  const [showClientModal, setShowClientModal] = useState(false);
 
   // Meals form state
   const [mealList, setMealList] = useState([]);
@@ -87,6 +90,14 @@ function AddReservation({ onClose }) {
               value={client.companyName}
               onChange={e => setClient({ ...client, companyName: e.target.value })}
             />
+            {/* Add Client button */}
+        <button
+          type="button"
+          className="add-client-btn"
+          onClick={() => setShowClientModal(true)}
+        >
+          Add Client
+        </button>
             <label>Contact</label>
             <input
               type="text"
@@ -271,6 +282,10 @@ function AddReservation({ onClose }) {
             <button className="submit-btn" type="button" onClick={handleSubmit}>Confirm Reservation</button>
           </div>
         </div>
+      )}
+       {/* Show the modal if requested */}
+      {showClientModal && (
+        <AddClient onClose={() => setShowClientModal(false)} />
       )}
     </div>
   );
