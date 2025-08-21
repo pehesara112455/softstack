@@ -71,7 +71,8 @@ function AddReservation({ onClose }) {
       meals: mealList,
       items: itemList,
       totalAmount,
-      status: 'pending'
+      status: 'pending',
+      createdAt: serverTimestamp() 
     });
     if (onClose) onClose();
   };

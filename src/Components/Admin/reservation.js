@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase';
-import { collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, updateDoc, doc, deleteDoc, orderBy, query ,onSnapshot} from 'firebase/firestore';
 import '../../Styles/Adminstyles/Reservationstyle.css';
 import AdminNav from './AdminNav';
 import AddReservation from './AddReservation';
@@ -15,14 +15,20 @@ function Reservation() {
   const [showAdd, setShowAdd] = useState(false);
 
   // Fetch reservations on mount
-  useEffect(() => {
-    fetchReservations();
-  }, []);
+useEffect(() => {
+  const q = query(collection(db, 'reservations'), orderBy('createdAt', 'desc'));
+  const unsubscribe = onSnapshot(q, (snapshot) => {
+    setReservations(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+  });
+  return () => unsubscribe();
+}, []);
+
 
   const fetchReservations = async () => {
-    const snap = await getDocs(collection(db, 'reservations'));
-    setReservations(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-  };
+  const q = query(collection(db, 'reservations'), orderBy('createdAt', 'desc'));
+  const snap = await getDocs(q);
+  setReservations(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+};
 
   // Inline advance editing and saving
   const handleAdvanceEdit = (id, value) => {

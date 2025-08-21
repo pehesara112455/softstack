@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase'; // adjust path as needed
-import { collection, getDocs, onSnapshot, orderBy,query  } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy,query  } from 'firebase/firestore';
 import '../../Styles/Adminstyles/ClientDetailsPageStyle.css';
 import AdminNav from './AdminNav';
 import AddClient from './AddClient';
@@ -30,7 +30,6 @@ useEffect(() => {
   );
 
   // Client form state
-  const [client, setClient] = useState({ companyName: '', contact: '', dateFrom: '', dateTo: '' });
   const [showClientModal, setShowClientModal] = useState(false);
 
   return (
