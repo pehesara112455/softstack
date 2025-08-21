@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import '../../Styles/Adminstyles/ClientModalStyle.css'; // Bring in your modal style
+import '../../Styles/Adminstyles/ClientModalStyle.css'; 
+import { db } from '../../firebase'; 
+import { collection, addDoc } from 'firebase/firestore';
+
 
 function ClientModal({ onClose }) {
   const [form, setForm] = useState({

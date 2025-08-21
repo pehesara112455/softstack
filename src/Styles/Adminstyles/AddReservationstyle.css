@@ -30,6 +30,29 @@ input, select, textarea {
   padding: 8px;
   min-width: 120px;
 }
+
+.add-client-btn {
+  background: #e98b1b;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.5px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+}
+.add-client-btn:hover,
+.add-client-btn:focus {
+  background: #c77614;
+  transform: scale(1.04);
+  outline: none;
+}
+
+
+
 .add-btn {
   background: #7a1818;
   color: #fff;
