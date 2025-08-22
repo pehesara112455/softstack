@@ -8,7 +8,6 @@ function AddRoomsForm({ onClose }) {
     name: '',
     capacity: '',
     type: '',
-    quantity: '',
     amount: '',
     imageURL: ''
   });
@@ -19,7 +18,6 @@ function AddRoomsForm({ onClose }) {
       name: room.name,
       capacity: Number(room.capacity),
       type: room.type,
-      quantity: Number(room.quantity),
       amount: Number(room.amount),
       imageURL: room.imageURL,
       status: 'available'
@@ -29,7 +27,7 @@ function AddRoomsForm({ onClose }) {
   };
 
   const clearForm = () => {
-    setRoom({ name: '', capacity: '', type: '', quantity: '', amount: '', imageURL: '' });
+    setRoom({ name: '', capacity: '', type: '', amount: '', imageURL: '' });
   };
 
   const onImageChange = (e) => {
@@ -54,9 +52,6 @@ function AddRoomsForm({ onClose }) {
         <option value="ac">A/C</option>
         <option value="nonac">Non A/C</option>
       </select>
-
-      <label>Quantity</label>
-      <input type="number" value={room.quantity} onChange={e => setRoom({ ...room, quantity: e.target.value })} required />
 
       <label>Amount</label>
       <input type="number" value={room.amount} onChange={e => setRoom({ ...room, amount: e.target.value })} required />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase';
+import { useNavigate } from "react-router-dom";
 import { collection, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import '../../Styles/Adminstyles/addhallsrooms.css';
 import AdminNav from './AdminNav';
@@ -12,6 +13,8 @@ function AddHallsRooms() {
   const [filterRoomsStatus, setFilterRoomsStatus] = useState('all');
   const [searchHalls, setSearchHalls] = useState('');
   const [searchRooms, setSearchRooms] = useState('');
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     fetchHalls();
@@ -94,7 +97,8 @@ function AddHallsRooms() {
               onChange={e => setSearchHalls(e.target.value)}
               className="search-input"
             />
-            <button className="add-btn">ADD NEW</button>
+            <button className="add-btn" onClick={() => navigate("/addhallsform")}> 
+  ADD NEW </button>
           </div>
           <table className="data-table">
             <thead>
@@ -160,7 +164,8 @@ function AddHallsRooms() {
               onChange={e => setSearchRooms(e.target.value)}
               className="search-input"
             />
-            <button className="add-btn">ADD NEW</button>
+            <button className="add-btn" onClick={() => navigate("/addroomsform")}> 
+  ADD NEW </button>
           </div>
           <table className="data-table">
             <thead>
@@ -169,7 +174,6 @@ function AddHallsRooms() {
                 <th>Name</th>
                 <th>Capacity</th>
                 <th>Type</th>
-                <th>Quantity</th>
                 <th>Image URL</th>
                 <th>Status</th>
                 <th>Amount</th>
@@ -183,7 +187,6 @@ function AddHallsRooms() {
                   <td>{room.name}</td>
                   <td>{room.capacity}</td>
                   <td>{room.type}</td>
-                  <td>{room.quantity}</td>
                   <td className="url-cell">{room.imageURL}</td>
                   <td>
                     <select
