@@ -54,7 +54,7 @@ html, body, #root {
   border-radius: 12px;
   background-color: #D9D9D9;
   color: maroon;
-  font-size: 1rem;
+  font-size: 100%;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -79,105 +79,6 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-.Search {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #f0f0f0;
-  width: 90%;
-  max-width: 500px;
-  border: 2px solid black;
-  border-radius: 12px;
-  margin: 40px auto;
-  color: black;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-.date {
-  width: 100%;
-  height: 30px;
-  background-color: white;
-  border-radius: 12px;
-  border: none;
-  padding-right: 7%;
-  margin: 10px 0;
-}
-
-.Search p {
-  margin: 15px;
-  font-weight: bold;
-}
-
-.calender {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 51%;
-  top: 54.3%;
-}
-
-.Search-button {
-  width: 100%;
-  height: 30px;
-  text-align: center;
-  background-color: maroon;
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  border: none;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: background-color 0.4s ease, transform 0.2s ease;
-}
-
-.Search-button:hover {
-  background-color: #a52a2a;
-  transform: scale(1.05);
-}
-
-.payment-button {
-  position: absolute;
-  top: 53%;
-  left: 76%;
-  width: 10%;
-  height: 6%;
-  border: none;
-  background-color: #EBDB73;
-  color: maroon;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.payment-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: skewX(-20deg);
-  transition: left 0.5s ease;
-  pointer-events: none;
-}
-
-.payment-button:hover::before {
-  left: 100%;
-}
-
-.payment-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
-
-.payment-button:active {
-  transform: scale(0.97);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
 
 .carts {
   display: flex;
@@ -303,54 +204,30 @@ html, body, #root {
   z-index: 2;
 }
 
-/* 📱 Responsive Media Queries */
+
 @media (max-width: 768px) {
-  .tc-heading {
-    top: 10%;
-    left: 10%;
-    font-size: 2rem;
-    text-align: center;
-  }
-
   .Buttonsrow {
-    flex-direction: column;
-    width: 90%;
-  }
-
-  .buttonss {
-    width: 80%;
-    margin: 10px 0;
-  }
-
-  .payment-button {
-    position: static;
-    width: 80%;
-    margin: 20px auto;
-    display: block;
-  }
-
-  .cart1 {
-    flex: 1 1 100%;
-    flex-direction: column;
-  }
-
-  .Hall1, .lables1 {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .Search {
-    flex-direction: column;
-    width: 90%;
-    max-width: 100%;
-  }
-
-  .Search-button {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .date {
-    width: 100%;
-  }
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.TRC {
+  width: 100%;
+  height: 6rem;
+  padding-top: 19%;
+}
+.tc-heading {
+  position: absolute;
+  top: 11%;
+  left: 11%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+}
 }

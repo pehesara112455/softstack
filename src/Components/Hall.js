@@ -1,5 +1,5 @@
 import React from "react";
-import '../Styles/Treiningcenter-styles.css';
+import '../Styles/Hallsstyle.css';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import TC from '../Resousers/TC.png';
@@ -19,9 +19,9 @@ function halls(){
             <button className="Search-button">🔍 Search</button>
           </div>
            <button className="payment-button">For payments 💰</button>
-          <div className="carts">
+          <div className="carts1">
             
-            <div className="cart1">
+            <div className="cart2">
               <span className="available-label">Available</span>
 
               <img src={hall1} alt="hall1" className="Hall1"/>
@@ -48,7 +48,7 @@ function halls(){
               </div>
               
             </div>
-            <div className="cart1">
+            <div className="cart2">
               <span className="available-label">Available</span>
 
               <img src={hall1} alt="hall1" className="Hall1"/>
@@ -75,7 +75,7 @@ function halls(){
               </div>
               
             </div>
-            <div className="cart1">
+            <div className="cart2">
               <span className="available-label">Available</span>
 
               <img src={hall1} alt="hall1" className="Hall1"/>

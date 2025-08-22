@@ -38,7 +38,7 @@
   height: 40%;
   border-radius: 10px;
   color: maroon;
-  align-items: center;
+  align-items: last baseline;
   flex-direction: column;
 
 }
@@ -52,15 +52,14 @@
   line-height: 140%;
 }
 .icon{
-  width: 15%;
+  width: 30%;
   height:20%;
 }
-.icons{
+.ics{
   display: flex;
-  margin-left: 0px;
+  width: 40%;
+  height: 40%;
   gap: 30px;
-  width: 90%;
-  background-color: #f0f0f0;
-
+  background-color:#f0f0f0;
 }
 
