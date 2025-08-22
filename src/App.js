@@ -1,24 +1,27 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Hompage from './Components/Hompage';
+import Homepage from './Components/Homepage';
 import About from './Components/About';
-import Treiningcenter from './Components/Treiningcenter';
-import Hall from './Components/Hall';
-import Reservation from './Components/Admin/Reservation'; 
-import ClientDetailsPage from './Components/Admin/ClientDetailsPage';
-
+import Reservation from './Components/Reservation';
+import ClientDetailsPage from './Components/ClientDetailsPage';
+import AdminNav from './Components/Admin/AdminNav';
+import Footer from './Components/Footer';
 
 function App() {
   return (
     <div className="app-container">
       <Router>
+        <AdminNav />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/clientdetails" element={<ClientDetailsPage />} />
+          {/* Add more routes here if needed */}
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
 }
+
 export default App;
