@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color:  #fff5f5;
   padding: 15px 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -20,12 +20,14 @@
   margin: 0;
   color: #333;
   font-size: 24px;
+  
 }
 
 .add-new-btn {
   background-color: #7F0404;
   color: white;
   border: none;
+  margin-left: auto;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
@@ -40,10 +42,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color:  #fff5f5;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  align-items: center;
 }
 
 .status-filter select {
@@ -56,11 +59,14 @@
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  width: 250px;
+  flex-grow: 1;
+  width: 1050px;
+  
 }
 
 .blog-table-container {
-  background-color: #fff;
+  background-color:  #fff5f5;
+  
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: hidden;
@@ -72,8 +78,9 @@
 }
 
 .blog-table th {
-  background-color: #7F0404;
-  color: white;
+  background-color:  #fff5f5;
+ border-bottom: 2px solid #7F0404;
+  color:#6a0303 ;
   padding: 12px 15px;
   text-align: left;
 }
@@ -240,12 +247,13 @@
 }
 
 .clear-btn {
-  background-color: #f1f1f1;
+  background-color: #c67809;
   color: #333;
 }
 
 .clear-btn:hover {
-  background-color: #e2e2e2;
+  background-color: #cccccc;
+  
 }
 
 .submit-btn {

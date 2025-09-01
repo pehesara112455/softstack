@@ -182,7 +182,7 @@ const Blog = () => {
         <div className="status-filter">
           <select>
             <option>Upcoming</option>
-            <option>Published</option>
+            <option>Completed</option>
             <option>Draft</option>
           </select>
         </div>
@@ -352,7 +352,7 @@ const Blog = () => {
                     onChange={(e) => setStatus(e.target.value)}
                   >
                     <option value="draft">Draft</option>
-                    <option value="published">Published</option>
+                    <option value="completed">Complete</option>
                   </select>
                 </div>
               </div>
