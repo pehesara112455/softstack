@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../Styles/Slideshowstyle.css';
-import cecimage1 from '../Resousers/cecimage1.jpg';
-import cecimage2 from     '../Resousers/cecimage2.jpg';
-import cecimage3 from     '../Resousers/cecimage3.jpg';
-
-
+import '../../Styles/ClientStyles/Slideshowstyle.css';
+import cecimage1 from '../../Resousers/cecimage1.jpg';
+import cecimage2 from     '../../Resousers/cecimage2.jpg';
+import cecimage3 from     '../../Resousers/cecimage3.jpg';
 
 
 function Slideshow() {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import '../Styles/Navbar-styles.css';
-import CECLOGO from '../Resousers/CECLOGO.jpg';
+import '../../Styles/ClientStyles/Navbar-styles.css';
+import CECLOGO from '../../Resousers/CECLOGO.jpg';
 
 
 
