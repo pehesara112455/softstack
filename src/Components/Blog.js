@@ -14,6 +14,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from './firebase'; // නිවැරදි import path
 import './Blogs.css';
+import Navbar from './Admin/AdminNav'
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -36,7 +37,7 @@ const Blog = () => {
   const [image5, setImage5] = useState(null);
   const [status, setStatus] = useState('draft');
 
-  // Fetch blogs from Firestore
+  // 
   useEffect(() => {
     const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -50,7 +51,7 @@ const Blog = () => {
     return () => unsubscribe();
   }, []);
 
-  // Filter blogs based on search term
+  // 
   const filteredBlogs = blogs.filter(blog => 
     blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     blog.subTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -73,7 +74,7 @@ const Blog = () => {
     setLoading(true);
 
     try {
-      // Upload images
+      // 
       const thumbnailURL = await uploadImage(thumbnail, 'thumbnails');
       const image1URL = await uploadImage(image1, 'images');
       const image2URL = await uploadImage(image2, 'images');
@@ -105,11 +106,11 @@ const Blog = () => {
         const blogRef = doc(db, 'blogs', editingBlog.id);
         await updateDoc(blogRef, blogData);
       } else {
-        // Add new blog
+        // 
         await addDoc(collection(db, 'blogs'), blogData);
       }
 
-      // Reset form and close modal
+      // 
       resetForm();
       setShowForm(false);
     } catch (error) {
@@ -119,7 +120,7 @@ const Blog = () => {
     }
   };
 
-  // Edit blog
+  // Edit 
   const handleEdit = (blog) => {
     setEditingBlog(blog);
     setTitle(blog.title);
@@ -128,7 +129,7 @@ const Blog = () => {
     setParagraph2(blog.paragraph2);
     setParagraph3(blog.paragraph3);
     setStatus(blog.status);
-    // Note: For existing images, we would need to handle them differently
+    // 
     setShowForm(true);
   };
 
@@ -143,7 +144,7 @@ const Blog = () => {
     }
   };
 
-  // Reset form
+  // 
   const resetForm = () => {
     setTitle('');
     setSubTitle('');
@@ -167,33 +168,36 @@ const Blog = () => {
   };
 
   return (
+    
     <div className="blog-management">
+      <Navbar/>
       <div className="blog-header">
         <h2>BLOG POSTS</h2>
-        <button 
-          className="add-new-btn"
-          onClick={() => setShowForm(true)}
-        >
-          ADD NEW
-        </button>
-      </div>
-
-      <div className="blog-controls">
-        <div className="status-filter">
-          <select>
+       
+      
+        <div className='filter-and-search'>
+           
+          <select className='status-filter'>
             <option>Upcoming</option>
             <option>Completed</option>
-            <option>Draft</option>
+            
           </select>
-        </div>
-        <div className="search-box">
-          <input
+          
+          <input className='search-box'
             type="text"
             placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+         <button className="addbutton"
+          onClick={() => setShowForm(true)}
+        >ADD NEW
+        </button>
+        
         </div>
+    
+       
+       
       </div>
 
       <div className="blog-table-container">
@@ -214,22 +218,28 @@ const Blog = () => {
                 <td>{blog.title}</td>
                 <td>{blog.subTitle}</td>
                 <td>
-                  <span className={`status-badge ${blog.status}`}>
-                    {blog.status}
-                  </span>
+                <select>
+                  <option>Upcoming</option>
+                  <option>Completed</option>
+            
+                </select>
                 </td>
                 <td>
                   <button 
                     className="edit-btn"
+                    title="Edit"
                     onClick={() => handleEdit(blog)}
+                    style={{cursor:'pointer'}}
                   >
-                    Edit
+                    ✏
                   </button>
                   <button 
                     className="delete-btn"
+                    title="Delete"
                     onClick={() => handleDelete(blog.id)}
+                    style={{cursor:'pointer'}}
                   >
-                    Delete
+                    🗑
                   </button>
                 </td>
               </tr>
