@@ -1,4 +1,4 @@
-// Blog.js
+
 import React, { useState, useEffect } from 'react';
 import { 
   collection, 
@@ -14,7 +14,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from './firebase'; // නිවැරදි import path
 import './Blogs.css';
-import Navbar from './Admin/AdminNav'
+
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -37,7 +37,7 @@ const Blog = () => {
   const [image5, setImage5] = useState(null);
   const [status, setStatus] = useState('draft');
 
-  // 
+  
   useEffect(() => {
     const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -170,7 +170,7 @@ const Blog = () => {
   return (
     
     <div className="blog-management">
-      <Navbar/>
+      
       <div className="blog-header">
         <h2>BLOG POSTS</h2>
        

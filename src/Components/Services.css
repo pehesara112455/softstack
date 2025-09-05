@@ -1,11 +1,14 @@
 .services-container {
   padding: 20px;
   font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 
 .services-header {
   display: flex;
   justify-content: space-between;
+  background-color: #fff5f5;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -18,9 +21,10 @@
 
 .search-box input {
   padding: 8px 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd;                                             
   border-radius: 4px;
-  width: 250px;
+  width: 70px;
+  height: 10px;
 }
 
 .btn {
@@ -53,7 +57,10 @@
 }
 
 .services-table-container {
-  overflow-x: auto;
+  overflow-x: hidden;
+  background-color: #fff5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .services-table {
@@ -64,14 +71,17 @@
 
 .services-table th,
 .services-table td {
-  padding: 12px;
+  padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #add;
+  color:#6a0303 ;
+  background-color:  #fff5f5;
 }
 
 .services-table th {
   background-color: #f8f9fa;
   font-weight: bold;
+  border-bottom: 2px solid #7F0404;
 }
 
 .description-cell {

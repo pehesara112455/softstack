@@ -3,7 +3,6 @@ import Hompage from './Components/Hompage';
 import Footer from './Components/Footer';
 import Blog from './Components/Blog';
 import Services from './Components/Services';
-import AdminNav from './Components/Admin/AdminNav';
 import { useEffect } from 'react';
 
 // Create a wrapper component that handles footer visibility
@@ -18,8 +17,7 @@ function AppContent() {
     <div className="app-container">
       <Routes>
         <Route path="/" element={<Hompage />} />
-        <Route path="/admin/*" element={<AdminNav />} />
-        <Route path="/blog" element={<Blog />} />
+         <Route path="/blog" element={<Blog />} />
         <Route path="/services" element={<Services />} />
       </Routes>
       {showFooter && <Footer />}

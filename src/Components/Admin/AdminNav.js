@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import "../../Styles/Adminstyles/Navbar-styles.css";
+import Blog from './Components/Blog';
 import { GiHamburgerMenu } from "react-icons/gi";
-import Blog from '../Blog';
+
 
 
 
