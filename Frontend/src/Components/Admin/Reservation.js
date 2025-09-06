@@ -6,6 +6,8 @@ import AdminNav from './AdminNav';
 import AddReservation from './AddReservation';
 // import { MdEdit } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
 function Reservation() {
   // State declarations
@@ -69,6 +71,81 @@ const handleEdit = (id) => {
   // Replace alert with navigation
   navigate(`/EditReservation/${id}`);
 };
+
+
+const handleView = async (id) => {
+  // Option 1: If you already have reservation in state, use it directly
+  const reservation = reservations.find(r => r.id === id);
+
+ 
+
+  // Now, generate PDF
+  generatePDFInvoice(reservation);
+};
+
+function generatePDFInvoice(reservation) {
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text('Reservation Invoice', 14, 20);
+
+  doc.setFontSize(12);
+  doc.text(`Reservation ID: ${reservation.id}`, 14, 32);
+  doc.text(`Client Name: ${reservation.client?.companyName || ''}`, 14, 40);
+  doc.text(`Contact: ${reservation.client?.contact || ''}`, 14, 46);
+  doc.text(`Date: ${reservation.client?.dateFrom || '-'} - ${reservation.client?.dateTo || '-'}`, 14, 52);
+  doc.text(`Advance: ${reservation.advance || ''}`, 14, 58);
+  doc.text(`Total Amount: ${reservation.totalAmount || ''}`, 14, 64);
+
+  // Prepare table rows for rooms, meals, items
+  let yOffset = 70;
+  if (reservation.rooms && reservation.rooms.length) {
+    doc.setFontSize(14);
+    doc.text("Rooms & Halls:", 14, yOffset);
+    yOffset += 7;
+    doc.setFontSize(11);
+    reservation.rooms.forEach((r, i) => {
+      doc.text(
+        `${i + 1}. ${r.room}, Type: ${r.type}, Qty: ${r.qty}, Per Unit: ${r.perUnit}, Extra Hours: ${r.extraHours}, Extra Amount: ${r.extraAmount}`,
+        16,
+        yOffset
+      );
+      yOffset += 7;
+    });
+  }
+  if (reservation.meals && reservation.meals.length) {
+    yOffset += 7;
+    doc.setFontSize(14);
+    doc.text("Meals:", 14, yOffset);
+    yOffset += 7;
+    doc.setFontSize(11);
+    reservation.meals.forEach((m, i) => {
+      doc.text(
+        `${i + 1}. ${m.meal}, Desc: ${m.description}, Qty: ${m.qty}, Amount: ${m.amount}`,
+        16,
+        yOffset
+      );
+      yOffset += 7;
+    });
+  }
+  if (reservation.items && reservation.items.length) {
+    yOffset += 7;
+    doc.setFontSize(14);
+    doc.text("Other Items:", 14, yOffset);
+    yOffset += 7;
+    doc.setFontSize(11);
+    reservation.items.forEach((it, i) => {
+      doc.text(
+        `${i + 1}. ${it.item}, Desc: ${it.description}, Amount: ${it.amount}`,
+        16,
+        yOffset
+      );
+      yOffset += 7;
+    });
+  }
+
+  doc.save(`invoice_${reservation.id}.pdf`);
+}
 
 
   // View as PDF placeholder
@@ -199,12 +276,17 @@ const handleEdit = (id) => {
                         onClick={() => handleDelete(r.id)}
                         style={{ cursor: 'pointer' }}
                       >🗑️</button>
-                      <button
-                        className="action-btn pdf-btn"
-                        title="View as PDF"
-                        onClick={() => handleViewPDF(r)}
-                        style={{ cursor: 'pointer' }}
-                      >View</button>
+                     <button
+  className="action-btn view-btn"
+  type="button"
+  onClick={() => handleView(r.id)}
+>
+  View
+</button>
+
+
+
+
                     </td>
                   </tr>
                 ))}
