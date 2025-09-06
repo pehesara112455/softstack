@@ -128,14 +128,15 @@
 .edit-btn {
   background-color:reb(14,1,1);
   color: black;
+  background-color: #fff5f5;
 }
 
 .edit-btn:hover {
-  background-color: white;
+  background-color: reb(14,1,1);
 }
 
 .delete-btn {
-  background-color:white;
+  background-color:#fff5f5;
   color: rgb(14, 1, 1);
 
 }
@@ -254,25 +255,48 @@
 }
 
 .clear-btn {
-  background-color: #c67809;
-  color: #333;
+    background-color: #c67809;
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
 }
 
 .clear-btn:hover {
-  background-color: #cccccc;
+  background-color: #9a5a07;
   
 }
 
 .submit-btn {
-  background-color: #7F0404;
+  background-color: #7a1818;
   color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: #6a0303;
+  background-color: #5c100f;
+
 }
 
 .submit-btn:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+
+.form-title {
+  color: #7a1818;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
 }

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   collection, 
@@ -8,17 +7,17 @@ import {
   doc, 
   onSnapshot, 
   query, 
-  where, 
   orderBy 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from './firebase'; // නිවැරදි import path
+import { db, storage } from './firebase';
 import './Blogs.css';
-
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all'); // Default filter
   const [showForm, setShowForm] = useState(false);
   const [editingBlog, setEditingBlog] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -37,7 +36,6 @@ const Blog = () => {
   const [image5, setImage5] = useState(null);
   const [status, setStatus] = useState('draft');
 
-  
   useEffect(() => {
     const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -51,12 +49,28 @@ const Blog = () => {
     return () => unsubscribe();
   }, []);
 
-  // 
-  const filteredBlogs = blogs.filter(blog => 
-    blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    blog.subTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    blog.id.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filter and search blogs
+  useEffect(() => {
+    let result = blogs;
+    
+    // Apply status filter
+    if (statusFilter === 'upcoming') {
+      result = result.filter(blog => blog.status === 'upcoming' || blog.status === 'draft');
+    } else if (statusFilter === 'completed') {
+      result = result.filter(blog => blog.status === 'completed');
+    }
+    
+    // Apply search filter
+    if (searchTerm) {
+      result = result.filter(blog => 
+        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.subTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        blog.id.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    setFilteredBlogs(result);
+  }, [blogs, statusFilter, searchTerm]);
 
   // Handle image upload to Firebase Storage
   const uploadImage = async (imageFile, path) => {
@@ -74,7 +88,7 @@ const Blog = () => {
     setLoading(true);
 
     try {
-      // 
+      // Upload images
       const thumbnailURL = await uploadImage(thumbnail, 'thumbnails');
       const image1URL = await uploadImage(image1, 'images');
       const image2URL = await uploadImage(image2, 'images');
@@ -106,11 +120,11 @@ const Blog = () => {
         const blogRef = doc(db, 'blogs', editingBlog.id);
         await updateDoc(blogRef, blogData);
       } else {
-        // 
+        // Add new blog
         await addDoc(collection(db, 'blogs'), blogData);
       }
 
-      // 
+      // Reset form
       resetForm();
       setShowForm(false);
     } catch (error) {
@@ -120,7 +134,7 @@ const Blog = () => {
     }
   };
 
-  // Edit 
+  // Edit blog
   const handleEdit = (blog) => {
     setEditingBlog(blog);
     setTitle(blog.title);
@@ -129,8 +143,20 @@ const Blog = () => {
     setParagraph2(blog.paragraph2);
     setParagraph3(blog.paragraph3);
     setStatus(blog.status);
-    // 
     setShowForm(true);
+  };
+
+  // Update blog status
+  const handleStatusChange = async (blogId, newStatus) => {
+    try {
+      const blogRef = doc(db, 'blogs', blogId);
+      await updateDoc(blogRef, { 
+        status: newStatus,
+        updatedAt: new Date()
+      });
+    } catch (error) {
+      console.error('Error updating blog status:', error);
+    }
   };
 
   // Delete blog
@@ -144,7 +170,7 @@ const Blog = () => {
     }
   };
 
-  // 
+  // Reset form
   const resetForm = () => {
     setTitle('');
     setSubTitle('');
@@ -168,36 +194,35 @@ const Blog = () => {
   };
 
   return (
-    
     <div className="blog-management">
-      
       <div className="blog-header">
         <h2>BLOG POSTS</h2>
        
-      
         <div className='filter-and-search'>
-           
-          <select className='status-filter'>
-            <option>Upcoming</option>
-            <option>Completed</option>
-            
+          <select 
+            className='status-filter'
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+          >
+            <option value="all">All</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="completed">Completed</option>
           </select>
           
-          <input className='search-box'
+          <input 
+            className='search-box'
             type="text"
             placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-         <button className="addbutton"
-          onClick={() => setShowForm(true)}
-        >ADD NEW
-        </button>
-        
+          <button 
+            className="addbutton"
+            onClick={() => setShowForm(true)}
+          >
+            ADD NEW
+          </button>
         </div>
-    
-       
-       
       </div>
 
       <div className="blog-table-container">
@@ -212,38 +237,42 @@ const Blog = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredBlogs.map(blog => (
-              <tr key={blog.id}>
-                <td>{blog.id.substring(0, 8)}...</td>
-                <td>{blog.title}</td>
-                <td>{blog.subTitle}</td>
-                <td>
-                <select>
-                  <option>Upcoming</option>
-                  <option>Completed</option>
-            
-                </select>
-                </td>
-                <td>
-                  <button 
-                    className="edit-btn"
-                    title="Edit"
-                    onClick={() => handleEdit(blog)}
-                    style={{cursor:'pointer'}}
-                  >
-                    ✏
-                  </button>
-                  <button 
-                    className="delete-btn"
-                    title="Delete"
-                    onClick={() => handleDelete(blog.id)}
-                    style={{cursor:'pointer'}}
-                  >
-                    🗑
-                  </button>
+            {filteredBlogs.length > 0 ? (
+              filteredBlogs.map(blog => (
+                <tr key={blog.id}>
+                  <td>{blog.id.substring(0, 8)}...</td>
+                  <td>{blog.title}</td>
+                  <td>{blog.subTitle}</td>
+                  <td>
+                    <span className={`status-badge ${blog.status}`}>
+                      {blog.status}
+                    </span>
+                  </td>
+                  <td>
+                    <button 
+                      className="edit-btn"
+                      title="Edit"
+                      onClick={() => handleEdit(blog)}
+                    >
+                      ✏
+                    </button>
+                    <button 
+                      className="delete-btn"
+                      title="Delete"
+                      onClick={() => handleDelete(blog.id)}
+                    >
+                      🗑
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="no-data">
+                  No blogs found with the current filters.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
@@ -362,7 +391,8 @@ const Blog = () => {
                     onChange={(e) => setStatus(e.target.value)}
                   >
                     <option value="draft">Draft</option>
-                    <option value="completed">Complete</option>
+                    <option value="upcoming">Upcoming</option>
+                    <option value="completed">Completed</option>
                   </select>
                 </div>
               </div>

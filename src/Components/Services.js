@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   collection, 
   addDoc, 
@@ -7,7 +7,6 @@ import {
   doc, 
   getDocs, 
   query, 
-  where,
   orderBy 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
@@ -27,15 +26,18 @@ const Services = () => {
     image2: null,
     image3: null
   });
-  const [uploadProgress, setUploadProgress] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // file input refs
+  const fileInput1Ref = useRef(null);
+  const fileInput2Ref = useRef(null);
+  const fileInput3Ref = useRef(null);
 
   // Fetch services from Firebase
   useEffect(() => {
     fetchServices();
   }, []);
 
-  // Filter services based on search term
   useEffect(() => {
     const filtered = services.filter(service => 
       service.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -84,7 +86,6 @@ const Services = () => {
 
   const uploadImage = async (imageFile, path) => {
     if (!imageFile) return null;
-    
     const imageRef = ref(storage, `${path}/${Date.now()}_${imageFile.name}`);
     await uploadBytes(imageRef, imageFile);
     return await getDownloadURL(imageRef);
@@ -92,7 +93,6 @@ const Services = () => {
 
   const deleteImage = async (imageUrl) => {
     if (!imageUrl) return;
-    
     try {
       const imageRef = ref(storage, imageUrl);
       await deleteObject(imageRef);
@@ -110,7 +110,6 @@ const Services = () => {
       let image2Url = formData.image2Url || '';
       let image3Url = formData.image3Url || '';
 
-      // Upload new images if provided
       if (formData.image1 && typeof formData.image1 !== 'string') {
         image1Url = await uploadImage(formData.image1, 'services/images');
       }
@@ -131,26 +130,16 @@ const Services = () => {
       };
 
       if (editingService) {
-        // Update existing service
         const serviceRef = doc(db, 'services', editingService.id);
         await updateDoc(serviceRef, serviceData);
       } else {
-        // Add new service
         serviceData.createdAt = new Date();
         await addDoc(collection(db, 'services'), serviceData);
       }
 
-      // Reset form and close modal
-      setFormData({
-        title: '',
-        description: '',
-        image1: null,
-        image2: null,
-        image3: null
-      });
-      setEditingService(null);
+      handleClear();
       setShowModal(false);
-      fetchServices(); // Refresh the list
+      fetchServices();
     } catch (error) {
       console.error('Error saving service:', error);
     } finally {
@@ -176,14 +165,12 @@ const Services = () => {
   const handleDelete = async (service) => {
     if (window.confirm(`Are you sure you want to delete "${service.title}"?`)) {
       try {
-        // Delete images from storage
         if (service.image1) await deleteImage(service.image1);
         if (service.image2) await deleteImage(service.image2);
         if (service.image3) await deleteImage(service.image3);
         
-        // Delete document from Firestore
         await deleteDoc(doc(db, 'services', service.id));
-        fetchServices(); // Refresh the list
+        fetchServices();
       } catch (error) {
         console.error('Error deleting service:', error);
       }
@@ -199,6 +186,11 @@ const Services = () => {
       image3: null
     });
     setEditingService(null);
+
+    // clear file inputs
+    if (fileInput1Ref.current) fileInput1Ref.current.value = '';
+    if (fileInput2Ref.current) fileInput2Ref.current.value = '';
+    if (fileInput3Ref.current) fileInput3Ref.current.value = '';
   };
 
   const handleCloseModal = () => {
@@ -274,15 +266,17 @@ const Services = () => {
                       <div className="action-buttons">
                         <button 
                           className="btn btn-edit"
+                          title='Edit'
                           onClick={() => handleEdit(service)}
                         >
-                          Edit
+                           ✏
                         </button>
                         <button 
                           className="btn btn-delete"
+                          title='Delete'
                           onClick={() => handleDelete(service)}
                         >
-                          Delete
+                           🗑
                         </button>
                       </div>
                     </td>
@@ -335,6 +329,7 @@ const Services = () => {
                 <input
                   type="file"
                   accept="image/*"
+                  ref={fileInput1Ref}
                   onChange={(e) => handleImageChange(e, 'image1')}
                 />
                 {formData.image1 && typeof formData.image1 === 'string' && (
@@ -347,6 +342,7 @@ const Services = () => {
                 <input
                   type="file"
                   accept="image/*"
+                  ref={fileInput2Ref}
                   onChange={(e) => handleImageChange(e, 'image2')}
                 />
                 {formData.image2 && typeof formData.image2 === 'string' && (
@@ -359,6 +355,7 @@ const Services = () => {
                 <input
                   type="file"
                   accept="image/*"
+                  ref={fileInput3Ref}
                   onChange={(e) => handleImageChange(e, 'image3')}
                 />
                 {formData.image3 && typeof formData.image3 === 'string' && (
