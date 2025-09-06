@@ -4,6 +4,8 @@ import About from './Components/Client/About';
 import Reservation from './Components/Admin/Reservation';
 import ClientDetailsPage from './Components/Admin/ClientDetailsPage';
 import Addhallsrooms from './Components/Admin/Addhallsrooms';
+import EditReservation from './Components/Admin/EditReservation';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
          <Route path="/reservation" element={<Reservation />} /> 
 <Route path="/client-details" element={<ClientDetailsPage />} /> 
 <Route path='/Addhallsrooms' element={<Addhallsrooms/>} />
+<Route path="/EditReservation/:reservationId" element={<EditReservation />} />
           {/* Add more routes here if needed */}
         </Routes>
       

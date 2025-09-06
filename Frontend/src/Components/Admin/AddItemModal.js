@@ -1,0 +1,55 @@
+import React, { useState } from 'react';
+import '../../Styles/Adminstyles/EditReservationStyle.css';
+
+function AddItemModal({ onClose, onSubmit }) {
+  const [form, setForm] = useState({
+    item: '',
+    description: '',
+    amount: ''
+  });
+
+  const handleClear = () => {
+    setForm({ item: '', description: '', amount: '' });
+  };
+
+  const handleSubmit = () => {
+    onSubmit({
+      ...form,
+      amount: Number(form.amount)
+    });
+    onClose();
+  };
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <h2>ADD ITEM</h2>
+        <div className="form-row">
+          <label>Item</label>
+          <input value={form.item} onChange={e => setForm({ ...form, item: e.target.value })} />
+        </div>
+        <div className="form-row">
+          <label>Description</label>
+          <textarea
+            value={form.description}
+            onChange={e => setForm({ ...form, description: e.target.value })}
+            rows={2}
+          />
+        </div>
+        <div className="form-row">
+          <label>Amount</label>
+          <input
+            type="number"
+            value={form.amount}
+            onChange={e => setForm({ ...form, amount: e.target.value })}
+          />
+        </div>
+        <div className="button-row">
+          <button className="clear-btn" type="button" onClick={handleClear}>Clear</button>
+          <button className="submit-btn" type="button" onClick={handleSubmit}>Submit</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+export default AddItemModal;

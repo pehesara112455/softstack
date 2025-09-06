@@ -5,6 +5,8 @@ import '../../Styles/Adminstyles/Reservationstyle.css';
 import AdminNav from './AdminNav';
 import AddReservation from './AddReservation';
 // import { MdEdit } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
+
 
 function Reservation() {
   // State declarations
@@ -62,10 +64,13 @@ useEffect(() => {
   };
 
   // Edit placeholder
-  const handleEdit = (id) => {
-    alert(`Edit reservation: ${id}`);
-    // Implement your edit logic or navigation here
-  };
+const navigate = useNavigate();
+
+const handleEdit = (id) => {
+  // Replace alert with navigation
+  navigate(`/EditReservation/${id}`);
+};
+
 
   // View as PDF placeholder
   const handleViewPDF = (r) => {
@@ -179,11 +184,16 @@ useEffect(() => {
                     </td>
                     <td className="action-cell" style={{ display: 'flex', gap: '0.5rem' }}>
                       <button
-                        className="action-btn edit-btn"
-                        title="Edit"
-                        onClick={() => handleEdit(r.id)}
-                        style={{ cursor: 'pointer' }}
-                      >✏️</button>
+  type="button"
+  className="action-btn edit-btn"
+  aria-label="Edit row"
+  title="Edit"
+  onClick={() => handleEdit(r.id)}
+>
+  <span role="img" style={{ fontSize: '1.2em' }}>✏️</span>
+</button>
+
+
                       <button
                         className="action-btn delete-btn"
                         title="Delete"
