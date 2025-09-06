@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../Styles/Adminstyles/EditReservationStyle.css';
 
-function AddItemModal({ onClose, onSubmit }) {
+function AddItemModal({ onClose, onSubmit, initialData }) {
   const [form, setForm] = useState({
     item: '',
     description: '',
     amount: ''
   });
 
+  useEffect(() => {
+    if (initialData) {
+      setForm({
+        item: initialData.item || '',
+        description: initialData.description || '',
+        amount: initialData.amount || ''
+      });
+    }
+  }, [initialData]);
+
   const handleClear = () => {
-    setForm({ item: '', description: '', amount: '' });
+    setForm({
+      item: '',
+      description: '',
+      amount: ''
+    });
   };
 
   const handleSubmit = () => {
     onSubmit({
-      ...form,
+      item: form.item,
+      description: form.description,
       amount: Number(form.amount)
     });
     onClose();
@@ -23,17 +38,20 @@ function AddItemModal({ onClose, onSubmit }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>ADD ITEM</h2>
+        <h2>{initialData ? 'EDIT ITEM' : 'ADD ITEM'}</h2>
         <div className="form-row">
           <label>Item</label>
-          <input value={form.item} onChange={e => setForm({ ...form, item: e.target.value })} />
+          <input
+            value={form.item}
+            onChange={e => setForm({ ...form, item: e.target.value })}
+          />
         </div>
         <div className="form-row">
           <label>Description</label>
           <textarea
+            rows={2}
             value={form.description}
             onChange={e => setForm({ ...form, description: e.target.value })}
-            rows={2}
           />
         </div>
         <div className="form-row">
@@ -45,11 +63,16 @@ function AddItemModal({ onClose, onSubmit }) {
           />
         </div>
         <div className="button-row">
-          <button className="clear-btn" type="button" onClick={handleClear}>Clear</button>
-          <button className="submit-btn" type="button" onClick={handleSubmit}>Submit</button>
+          <button className="clear-btn" type="button" onClick={handleClear}>
+            Clear
+          </button>
+          <button className="submit-btn" type="button" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
       </div>
     </div>
   );
 }
+
 export default AddItemModal;

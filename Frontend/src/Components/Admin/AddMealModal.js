@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../Styles/Adminstyles/EditReservationStyle.css';
 
-function AddMealModal({ onClose, onSubmit }) {
+function AddMealModal({ onClose, onSubmit, initialData }) {
   const [form, setForm] = useState({
     meal: '',
     description: '',
@@ -9,13 +9,30 @@ function AddMealModal({ onClose, onSubmit }) {
     amount: ''
   });
 
+  useEffect(() => {
+    if (initialData) {
+      setForm({
+        meal: initialData.meal || '',
+        description: initialData.description || '',
+        qty: initialData.qty || '',
+        amount: initialData.amount || ''
+      });
+    }
+  }, [initialData]);
+
   const handleClear = () => {
-    setForm({ meal: '', description: '', qty: '', amount: '' });
+    setForm({
+      meal: '',
+      description: '',
+      qty: '',
+      amount: ''
+    });
   };
 
   const handleSubmit = () => {
     onSubmit({
-      ...form,
+      meal: form.meal,
+      description: form.description,
       qty: Number(form.qty),
       amount: Number(form.amount)
     });
@@ -25,17 +42,20 @@ function AddMealModal({ onClose, onSubmit }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>ADD MEAL</h2>
+        <h2>{initialData ? 'EDIT MEAL' : 'ADD MEAL'}</h2>
         <div className="form-row">
           <label>Meal</label>
-          <input value={form.meal} onChange={e => setForm({ ...form, meal: e.target.value })} />
+          <input
+            value={form.meal}
+            onChange={e => setForm({ ...form, meal: e.target.value })}
+          />
         </div>
         <div className="form-row">
           <label>Description</label>
           <textarea
+            rows={3}
             value={form.description}
             onChange={e => setForm({ ...form, description: e.target.value })}
-            rows={3}
           />
         </div>
         <div className="form-row">
@@ -55,11 +75,16 @@ function AddMealModal({ onClose, onSubmit }) {
           />
         </div>
         <div className="button-row">
-          <button className="clear-btn" type="button" onClick={handleClear}>Clear</button>
-          <button className="submit-btn" type="button" onClick={handleSubmit}>Submit</button>
+          <button className="clear-btn" type="button" onClick={handleClear}>
+            Clear
+          </button>
+          <button className="submit-btn" type="button" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
       </div>
     </div>
   );
 }
+
 export default AddMealModal;
