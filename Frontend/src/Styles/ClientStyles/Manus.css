@@ -1,0 +1,39 @@
+.menu-note {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px auto;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+}
+
+
+
+.carts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 90%;
+  margin: 0px auto;
+  padding: 40px 0;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+  
+}
+.card1{
+  width: 40%;
+  
+}

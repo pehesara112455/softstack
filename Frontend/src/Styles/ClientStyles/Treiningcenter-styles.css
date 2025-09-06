@@ -1,0 +1,233 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.tc-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #f0f0f0;
+}
+
+.TRC {
+  width: 100%;
+  height: auto;
+  padding-top: 4.5%;
+}
+
+.tc-heading {
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.Buttonsrow {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonss {
+  padding: 10px 20px;
+  width: 24.9%;
+  border: none;
+  border-radius: 12px;
+  background-color: #D9D9D9;
+  color: maroon;
+  font-size: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonss.active {
+  background-color: maroon;
+  color: white;
+}
+
+.buttonss:active {
+  transform: scale(0.98);
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+}
+
+
+.carts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 90%;
+  margin: 10px auto;
+  padding: 40px 0;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+}
+
+.cart1 {
+  position: relative;
+  flex: 0 1 calc(45% - 30px);
+  background-color: white;
+  border-radius: 33px;
+  color: maroon;
+  font-weight: bold;
+  margin: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.lables1 {
+  display: flex;
+  background-color: white;
+  width: 40%;
+  height: 84%;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.icons {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  height: 40%;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.chair, .Ac, .wifi {
+  display: flex;
+  width: 27%;
+  height: 75%;
+  border-radius: 50%;
+  background-color: maroon;
+  margin: 10px;
+}
+
+.Hall1 {
+  width: 50%;
+  height: 84%;
+  margin: 20px;
+}
+
+.Hall1time {
+  color: #A6A6A6;
+  margin-top: 5px;
+}
+
+.Hall1lable {
+  margin: 0px;
+  font-size: 1.5rem;
+}
+
+.chairicon {
+  width: 55px;
+  height: 50px;
+  margin-top: 5px;
+}
+
+.Acicon {
+  width: 40px;
+  height: 50px;
+  margin-left: 7px;
+  margin-top: 5px;
+}
+
+.wifiicon {
+  width: 50px;
+  height: 50px;
+  margin-left: 4px;
+  margin-top: 8px;
+}
+
+.lables2 {
+  display: flex;
+  width: 100%;
+  height: inherit;
+  background-color: white;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.Hall1lable1, .Hall1lable2, .Hall1lable3 {
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+.Hall1lable2 {
+  margin-left: 29px;
+}
+
+.Hall1lable3 {
+  margin-left: 50px;
+}
+
+.available-label {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  background-color: green;
+  color: white;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  z-index: 2;
+}
+
+
+@media (max-width: 768px) {
+  .Buttonsrow {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.TRC {
+  width: 100%;
+  height: 6rem;
+  padding-top: 19%;
+}
+.tc-heading {
+  position: absolute;
+  top: 11%;
+  left: 11%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+}
+}
