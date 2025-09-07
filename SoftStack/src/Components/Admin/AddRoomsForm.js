@@ -28,11 +28,10 @@ function AddRoomsForm({ onClose, editingRoom }) {
   }, [editingRoom]);
 
   const uploadImage = async (file) => {
-    if (!file) return room.imageURL;
-    const storageRef = ref(storage, `hallsrooms/${Date.now()}_${file.name}`);
-    await uploadBytes(storageRef, file);
-    return await getDownloadURL(storageRef);
-  };
+  const storageRef = ref(storage, `hallsrooms/${Date.now()}_${file.name}`);
+  await uploadBytes(storageRef, file);
+  return await getDownloadURL(storageRef);
+};
 
   const submitRoom = async (e) => {
     e.preventDefault();

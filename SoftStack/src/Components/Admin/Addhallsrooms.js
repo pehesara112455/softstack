@@ -248,12 +248,7 @@ function AddHallsRooms() {
                     <td>{room.name}</td>
                     <td>{room.capacity}</td>
                     <td>{room.type}</td>
-                    <td>
-  {typeof room.imageURL === 'string' && room.imageURL.startsWith('http')
-    ? <img src={room.imageURL} alt={room.name} className="thumbnail" />
-    : <span className="no-image-chip">No image</span>}
-</td>
-
+                    <td className="url-cell">{room.imageURL}</td>
                     <td>{room.amount}</td>
                     <td>
                       <button onClick={() => handleEditRoom(room.id)} className="action-btn edit-btn">✏</button>
