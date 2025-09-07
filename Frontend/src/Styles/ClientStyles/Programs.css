@@ -1,0 +1,103 @@
+.programs-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.program-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 10px 0;
+  gap: 20px;
+}
+
+.program-tabs button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ddd;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.program-tabs button.active {
+  background-color: #7f0404;
+  color: #fff;
+}
+
+.donation-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.donation-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ffe066; /* Chrome yellow */
+  color: #7f0404;           /* Text color */
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.donation-button:hover {
+  background-color: q; /* Slightly darker yellow on hover */
+}
+
+.program-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.program-card {
+  display: flex;
+  max-width: 900px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-left {
+  flex: 1;
+}
+
+.program-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-right {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.program-title {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.program-subtopic {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.program-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
