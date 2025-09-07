@@ -10,8 +10,9 @@ import {
   orderBy 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage } from './firebase'; // Your Firebase configuration
-import './Services.css';
+import { db, storage } from '../firebase'; // Your Firebase configuration
+import '../../Styles/Adminstyles/Services.css';
+import AdminNav from './AdminNav';
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -201,9 +202,12 @@ const Services = () => {
 
   return (
     <div className="services-container">
-      <div className="services-header">
+      <AdminNav/>
+      <div className='sss'>
+         <div className="services-header">
         <h2>Service Management</h2>
-        <div className="services-actions">
+        <div className='actioncontainer'>
+          <div className="services-actions">
           <div className="search-box">
             <input
               type="text"
@@ -219,8 +223,9 @@ const Services = () => {
             Add New Service
           </button>
         </div>
+        </div>
+        
       </div>
-
       {loading && !showModal ? (
         <div className="loading">Loading services...</div>
       ) : (
@@ -293,6 +298,10 @@ const Services = () => {
           </table>
         </div>
       )}
+      </div>
+     
+
+      
 
       {showModal && (
         <div className="modal-overlay">

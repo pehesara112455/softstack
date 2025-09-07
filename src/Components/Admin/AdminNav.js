@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import "../../Styles/Adminstyles/Navbar-styles.css";
-import Blog from './Components/Blog';
 import { GiHamburgerMenu } from "react-icons/gi";
 
 
@@ -52,11 +51,7 @@ const AdminNav = () => {
       )}
 
       <div className="admin-content">
-        <Routes>
-          <Route path="blog-posts" element={<Blog />} />
-          
-          {/* Add other admin routes here */}
-        </Routes>
+        
       </div>
     </div>
   );

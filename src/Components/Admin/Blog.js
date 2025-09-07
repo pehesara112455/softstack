@@ -10,8 +10,9 @@ import {
   orderBy 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from './firebase';
-import './Blogs.css';
+import { db, storage } from '../firebase';
+import '../../Styles/Adminstyles/Blogs.css';
+import AdminNav from './AdminNav';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -195,10 +196,12 @@ const Blog = () => {
 
   return (
     <div className="blog-management">
-      <div className="blog-header">
+          <AdminNav/>
+          <div className='bbb'>
+            <div className="blog-header">
         <h2>BLOG POSTS</h2>
        
-        <div className='filter-and-search'>
+        <div className='Filter-and-search'>
           <select 
             className='status-filter'
             value={statusFilter}
@@ -210,7 +213,7 @@ const Blog = () => {
           </select>
           
           <input 
-            className='search-box'
+            className='Search-box'
             type="text"
             placeholder="Search"
             value={searchTerm}
@@ -224,7 +227,6 @@ const Blog = () => {
           </button>
         </div>
       </div>
-
       <div className="blog-table-container">
         <table className="blog-table">
           <thead>
@@ -277,6 +279,11 @@ const Blog = () => {
         </table>
       </div>
 
+          </div>
+
+      
+
+      
       {showForm && (
         <div className="modal-overlay">
           <div className="blog-form-modal">

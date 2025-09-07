@@ -1,8 +1,17 @@
 /* Blogs.css */
 .blog-management {
+  display: flex;
+  padding: 0px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+.bbb{
+  display: flex;
   padding: 20px;
   background-color: #f5f5f5;
   min-height: 100vh;
+  width: 100vw;
+  flex-direction: column;
 }
 
 .blog-header {
@@ -33,7 +42,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  height: 3%;
+  height: 2rem;
   width: 10%;
 }
 
@@ -54,23 +63,26 @@
 
 .status-filter {
   padding: 8px 12px;
-  border-radius: 4px;
-  width: 10%;
-  height: 2%;
+  border-radius: 10px;
+  width: 6rem;
+  height: 2rem;
+  border-color: maroon;
 }
 
-.search-box {
+.Search-box {
   padding: 8px 12px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 10px;
   width: 70%;
-  height: 10%;
+  height: 1rem;
+  border-color: maroon;
   
 }
-.filter-and-search{
+.Filter-and-search{
   display: flex;
+  height: auto;
   flex-direction: row;
-  gap: 7%;
+  gap: 5%;
 }
 
 .blog-table-container {

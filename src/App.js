@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Hompage from './Components/Hompage';
 import Footer from './Components/Footer';
-import Blog from './Components/Blog';
-import Services from './Components/Services';
+import Blog from './Components/Admin/Blog';
+import Services from './Components/Admin/Services';
 
 import { useEffect } from 'react';
 
@@ -22,7 +22,7 @@ function AppContent() {
         <Route path="/services" element={<Services />} />
        
       </Routes>
-      {showFooter && <Footer />}
+      
     </div>
   );
 }
