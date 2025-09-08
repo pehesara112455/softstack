@@ -37,3 +37,31 @@
   width: 40%;
   
 }
+@media (max-width: 768px) {
+  .menu-note {
+    font-size: 14px;
+    padding: 10px;
+    width: 95%;
+    margin: 10px auto;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .content-container {
+    padding: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .carts {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    width: 100%;
+  }
+
+  .card1 {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

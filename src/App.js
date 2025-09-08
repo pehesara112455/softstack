@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Hompage from './Components/Hompage';
 import About from './Components/About';
 import Treiningcenter from './Components/Treiningcenter';
+import Loginpage from './Components/Admin/Loginpage';
+
 import Hall from './Components/Hall';
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
           <Route path="/About" element={<About />} />
 
           <Route path="/Treiningcenter" element={<Treiningcenter />} />
+          <Route path="/Loginpage" element={<Loginpage />} />
+
 
           
 

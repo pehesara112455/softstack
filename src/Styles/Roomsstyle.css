@@ -1,4 +1,4 @@
-.carts {
+.cartss {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -11,7 +11,7 @@
 }
 
 .cart1 {
-  position: relative;
+ position: relative;
   flex: 0 1 calc(45% - 30px);
   background-color: white;
   border-radius: 33px;
@@ -24,7 +24,7 @@
   box-sizing: border-box;
 }
 
-.lables1 {
+.Lables1 {
   display: flex;
   background-color: white;
   width: 40%;
@@ -234,7 +234,7 @@
   
   background-color: #f0f0f0;
   flex-direction: row;
-  width: 120%;
+  width: 100%;
   
   border: 2px solid black;
   border-radius: 12px;
@@ -306,39 +306,31 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .carts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  width: 90%;
-  margin: 10px auto;
-  padding: 40px 0;
-  background-color: #f0f0f0;
-  box-sizing: border-box;
+     flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    width: 100%;
 }
 
 .cart1 {
-  position: relative;
-  display: flex;
-  width: 59%;
-  background-color: rgb(185, 92, 92);
-  border-radius: 33px;
-  color: maroon;
-  font-weight: bold;
-  margin: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
+   flex-direction: column;
+    flex: 1 1 100%;
+    margin: 10px 0;
+    border-radius: 20px;
+    padding: 15px;
+    
 }
 
-.lables1 {
-  display: flex;
-  background-color: white;
-  width: 40%;
-  height: 84%;
-  flex-direction: column;
-  margin-top: 20px;
+.Lables1 {
+
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    text-align: center;
+    align-self: center;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
 }
 
 .icons {
@@ -361,9 +353,9 @@
 }
 
 .Hall1 {
-  width: 50%;
-  height: 84%;
-  margin: 20px;
+  width: 100%;
+    height: auto;
+    margin: 0px 0;
 }
 
 .Hall1time {
@@ -371,7 +363,7 @@
   margin-top: 5px;
 }
 
-.Hall1lable {
+.hall1lable {
   margin: 0px;
   font-size: 150%;
 }

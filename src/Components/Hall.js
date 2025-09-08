@@ -11,24 +11,24 @@ import wifi from '../Resousers/wifi.png';
 
 
 function halls(){
-    return(<div className="content-container">
-          <div className="Search">
+    return(<div className="Content-container">
+          <div className="search">
             <p>Date</p>
-            <input type="text" className="date" placeholder=" " />
-            <img src={prime_calendar} alt="calendar" className="calender"/>
-            <button className="Search-button">🔍 Search</button>
-          </div>
-           <button className="payment-button">For payments 💰</button>
-          <div className="carts1">
+            <input type="text" className="Date" placeholder=" " />
             
-            <div className="cart2">
+            <button className="search-button">🔍 Search</button>
+          </div>
+           <button className="Payment-button">For payments 💰</button>
+          <div className="Carts">
+            
+            <div className="cart">
               <span className="available-label">Available</span>
 
-              <img src={hall1} alt="hall1" className="Hall1"/>
-              <div className="lables1">
+              <img src={hall1} alt="hall1" className="hall1img"/>
+              <div className="lable1">
                 <label htmlFor="Hallname" className="Hall1lable">HALL No.1</label>
                 <label htmlFor="Hallname" className="Hall1time">8.00 am - 5.00 pm</label>
-                <div className="icons">
+                <div className="Icons">
                   <div className="chair">
                     <img src={chair}alt="chair"className="chairicon"/>
                   </div>
@@ -39,7 +39,7 @@ function halls(){
                     <img src={wifi} alt="wifi"className="wifiicon"/>
                   </div>
               </div>
-              <div className="lables2">
+              <div className="Lable2">
                 <label htmlFor="Hallname" className="Hall1lable1">110 Persons</label>
                 <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
                 <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
@@ -48,14 +48,14 @@ function halls(){
               </div>
               
             </div>
-            <div className="cart2">
+            <div className="cart">
               <span className="available-label">Available</span>
 
-              <img src={hall1} alt="hall1" className="Hall1"/>
-              <div className="lables1">
+              <img src={hall1} alt="hall1" className="hall1img"/>
+              <div className="lable1">
                 <label htmlFor="Hallname" className="Hall1lable">HALL No.1</label>
                 <label htmlFor="Hallname" className="Hall1time">8.00 am - 5.00 pm</label>
-                <div className="icons">
+                <div className="Icons">
                   <div className="chair">
                     <img src={chair}alt="chair"className="chairicon"/>
                   </div>
@@ -66,7 +66,7 @@ function halls(){
                     <img src={wifi} alt="wifi"className="wifiicon"/>
                   </div>
               </div>
-              <div className="lables2">
+              <div className="Lable2">
                 <label htmlFor="Hallname" className="Hall1lable1">110 Persons</label>
                 <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
                 <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
@@ -75,14 +75,14 @@ function halls(){
               </div>
               
             </div>
-            <div className="cart2">
+            <div className="cart">
               <span className="available-label">Available</span>
 
-              <img src={hall1} alt="hall1" className="Hall1"/>
-              <div className="lables1">
+              <img src={hall1} alt="hall1" className="hall1img"/>
+              <div className="lable1">
                 <label htmlFor="Hallname" className="Hall1lable">HALL No.1</label>
                 <label htmlFor="Hallname" className="Hall1time">8.00 am - 5.00 pm</label>
-                <div className="icons">
+                <div className="Icons">
                   <div className="chair">
                     <img src={chair}alt="chair"className="chairicon"/>
                   </div>
@@ -93,7 +93,7 @@ function halls(){
                     <img src={wifi} alt="wifi"className="wifiicon"/>
                   </div>
               </div>
-              <div className="lables2">
+              <div className="Lable2">
                 <label htmlFor="Hallname" className="Hall1lable1">110 Persons</label>
                 <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
                 <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
@@ -102,6 +102,8 @@ function halls(){
               </div>
               
             </div>
+            
+            
             
             
            

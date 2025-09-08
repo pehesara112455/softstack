@@ -25,7 +25,7 @@ function otherfacilities(){
               <h2>Our facilities</h2>
               <p>At the Community Education Centre, we provide a wide range of modern facilities to ensure your events run smoothly and professionally. Our fully-equipped rooms feature state-of-the-art sound systems, multimedia projectors, and presentation screens to support seminars, workshops, and conferences. Whether you're planning a small meeting, a large-scale event, or a special celebration, our halls are also available for weddings, parties, and other occasions, offering a welcoming and flexible setting to meet all your technical and hospitality needs.</p>
               <div className="ics">
-                 <img src={I4} alt="img" className="icon"/>
+              <img src={I4} alt="img" className="icon"/>
               <img src={I5} alt="img" className="icon"/>              
               <img src={I6} alt="img" className="icon"/>
               <img src={I7} alt="img" className="icon"/>

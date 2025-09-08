@@ -13,22 +13,22 @@ import wifi from '../Resousers/wifi.png';
 
 
 function halls(){
-    return(<div className="content-container">
+    return(<div className="Content-container">
           <div className="Search">
             <p>Date</p>
             <input type="text" className="date" placeholder=" " />
-            <img src={prime_calendar} alt="calendar" className="calender"/>
+            
             <button className="Search-button">🔍 Search</button>
           </div>
            <button className="payment-button">For payments 💰</button>
-          <div className="carts">
+          <div className="cartss">
             
             <div className="cart1">
               <span className="available-label">Available</span>
 
               <img src={Room1} alt="hall1" className="Hall1"/>
-              <div className="lables1">
-                <label htmlFor="Hallname" className="Hall1lable">ROOM No.1</label>
+              <div className="Lables1">
+                <label htmlFor="Hallname" className="hall1lable">ROOM No.1</label>
                 <label htmlFor="Hallname" className="Hall1time">Double room</label>
                 <div className="icons">
                   <div className="chair">
