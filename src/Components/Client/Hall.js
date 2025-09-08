@@ -1,13 +1,13 @@
 import React from "react";
-import '../Styles/Hallsstyle.css';
+import '../../Styles/ClientStyles/Hallsstyle.css';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import TC from '../Resousers/TC.png';
-import prime_calendar from '../Resousers/prime_calendar.png';
-import hall1 from '../Resousers/hall1.png';
-import chair from '../Resousers/chair.png';
-import Ac from '../Resousers/Ac.png';
-import wifi from '../Resousers/wifi.png';
+import TC from '../../Resousers/TC.png';
+import prime_calendar from '../../Resousers/prime_calendar.png';
+import hall1 from '../../Resousers/hall1.png';
+import chair from '../../Resousers/chair.png';
+import Ac from '../../Resousers/Ac.png';
+import wifi from '../../Resousers/wifi.png';
 
 
 function halls(){

@@ -1,11 +1,11 @@
 import react from "react";
 import Navbar from "./Navbar";
-import '../Styles/Aboutstyle.css';
-import Img1 from     '../Resousers/Img1.png';
+import '../../Styles/ClientStyles/Aboutstyle.css';
+import Img1 from     '../../Resousers/Img1.png';
 import Footer from './Footer';
-import Img2 from     '../Resousers/Img2.png';
-import Img3 from     '../Resousers/Img3.png';
-import Img4 from     '../Resousers/Img4.png';
+import Img2 from     '../../Resousers/Img2.png';
+import Img3 from     '../../Resousers/Img3.png';
+import Img4 from     '../../Resousers/Img4.png';
 
 
 

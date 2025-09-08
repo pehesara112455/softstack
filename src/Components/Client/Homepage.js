@@ -1,12 +1,12 @@
 
 import React from 'react';
-import '../Styles/homepage.css';
+import '../../Styles/ClientStyles/homepage.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Slideshow from './Slideshow';
-import H1 from '../Resousers/H1.png';
-import H2 from '../Resousers/H2.png';
-import H3 from '../Resousers/H3.png';
+import H1 from '../../Resousers/H1.png';
+import H2 from '../../Resousers/H2.png';
+import H3 from '../../Resousers/H3.png';
 
 
 

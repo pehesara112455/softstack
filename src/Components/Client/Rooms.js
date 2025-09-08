@@ -1,15 +1,15 @@
 import React from "react";
-import '../Styles/Roomsstyle.css';
+import '../../Styles/ClientStyles/Roomsstyle.css';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Room1 from '../Resousers/Room1.png';
-import Room2 from '../Resousers/Room2.png';
+import Room1 from '../../Resousers/Room1.png';
+import Room2 from '../../Resousers/Room2.png';
 
-import prime_calendar from '../Resousers/prime_calendar.png';
-import hall1 from '../Resousers/hall1.png';
-import Person from '../Resousers/Person.png';
-import Ac from '../Resousers/Ac.png';
-import wifi from '../Resousers/wifi.png';
+import prime_calendar from '../../Resousers/prime_calendar.png';
+import hall1 from '../../Resousers/hall1.png';
+import Person from '../../Resousers/Person.png';
+import Ac from '../../Resousers/Ac.png';
+import wifi from '../../Resousers/wifi.png';
 
 
 function halls(){

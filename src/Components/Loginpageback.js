@@ -1,6 +1,6 @@
 // src/backend/authService.js
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebaseConfig"; // Make sure firebaseConfig.js is set up
+import { auth } from "../firebaseConfig"; // Make sure firebaseConfig.js is set up
 
 export const loginAdmin = async (email, password) => {
   try {

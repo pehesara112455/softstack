@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../../Styles/Adminstyles/Adminlogin.css';
 import { PiPassword } from "react-icons/pi";
-import { loginAdmin } from "../../Backend/Loginpageback"; // Make sure this path is correct
+import { loginAdmin } from "../Loginpageback"; // Make sure this path is correct
 
 function Loginpage() {
   const [email, setEmail] = useState("");

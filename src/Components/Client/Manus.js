@@ -1,14 +1,14 @@
 import React from "react";
-import '../Styles/Manus.css';
+import '../../Styles/ClientStyles/Manus.css';
 
-import menu1 from '../Resousers/menu1.png';
-import menu2 from '../Resousers/menu2.png';
-import menu3 from '../Resousers/menu3.png';
-import menu4 from '../Resousers/menu4.png';
-import menu5 from '../Resousers/menu5.png';
-import menu6 from '../Resousers/menu6.png';
-import menu7 from '../Resousers/menu7.png';
-import menu8 from '../Resousers/menu8.png';
+import menu1 from '../../Resousers/menu1.png';
+import menu2 from '../../Resousers/menu2.png';
+import menu3 from '../../Resousers/menu3.png';
+import menu4 from '../../Resousers/menu4.png';
+import menu5 from '../../Resousers/menu5.png';
+import menu6 from '../../Resousers/menu6.png';
+import menu7 from '../../Resousers/menu7.png';
+import menu8 from '../../Resousers/menu8.png';
 
 
 
