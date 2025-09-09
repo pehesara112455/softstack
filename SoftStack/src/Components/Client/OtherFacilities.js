@@ -1,22 +1,19 @@
 import React from "react";
-import '../Styles/OtherFacilities.css';
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Room1 from '../Resousers/Room1.png';
-import Room2 from '../Resousers/Room2.png';
+import '../../Styles/ClientStyles/OtherFacilities.css';
 
-import I4 from '../Resousers/I4.png';
-import I5 from '../Resousers/I5.png';
-import I6 from '../Resousers/I6.png';
-import I7 from '../Resousers/I7.png';
-import I8 from '../Resousers/I8.png';
-import I1 from '../Resousers/I1.png';
+
+import I4 from '../../Resousers/I4.png';
+import I5 from '../../Resousers/I5.png';
+import I6 from '../../Resousers/I6.png';
+import I7 from '../../Resousers/I7.png';
+import I8 from '../../Resousers/I8.png';
+import I1 from '../../Resousers/I1.png';
 
 
 
 
 function otherfacilities(){
-    return(<div className="content-container">
+    return(<div className="Content-container">
           
            
           <div className="carts">

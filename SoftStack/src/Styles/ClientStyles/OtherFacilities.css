@@ -1,9 +1,10 @@
-.content-container {
+.Content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   background-color: #f0f0f0;
   box-sizing: border-box;
 }
@@ -50,6 +51,7 @@
   padding: 20px;
   padding-top: 10px;
   line-height: 140%;
+  text-align:center;
 }
 .icon{
   width: 30%;
@@ -59,7 +61,63 @@
   display: flex;
   width: 40%;
   height: 40%;
-  gap: 30px;
+  gap: 80px;
   background-color:#f0f0f0;
+}
+@media (max-width: 768px) {
+  .content-container {
+    padding: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .carts {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    width: 100%;
+  }
+
+  .manus {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .otherfaciliti2 {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .ourvasilities {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ourvasilities h2 {
+    font-size: 1.2rem;
+  }
+
+  .ourvasilities p {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ics {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    margin-top: 10px;
+  }
 }
 

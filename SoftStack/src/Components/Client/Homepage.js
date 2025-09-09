@@ -39,6 +39,7 @@ function Hompage(){
                     <p>Stay updated on local events, programs and more.</p>
                 </div>
             </div>
+            <Footer/>
           
             
            

@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import '../Styles/Treiningcenter-styles.css';
+import '../../Styles/ClientStyles/Treiningcenter-styles.css';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import TC from '../Resousers/TC.png';
-import prime_calendar from '../Resousers/prime_calendar.png';
-import hall1 from '../Resousers/hall1.png';
-import chair from '../Resousers/chair.png';
-import Ac from '../Resousers/Ac.png';
-import wifi from '../Resousers/wifi.png';
+import TC from '../../Resousers/TC.png';
 import Hall from './Hall';
 import Rooms from './Rooms';
 import Manus from './Manus';
@@ -17,7 +12,7 @@ import OtherFacilities from './OtherFacilities';
 
 
 
-function Treiningcentre() {
+function Trainingcenter() {
   const [activeButton, setActiveButton] = useState(0);
 
   const handleClick = (index) => {
@@ -59,17 +54,17 @@ function Treiningcentre() {
           </button>
         </div>
 
-        {/* ✅ Conditionally render components based on activeButton */}
-        <div className="content-container">
+         <div className="Content-container">
           {activeButton === 0 && <Hall />}
           {activeButton === 1 && <Rooms/>}
           {activeButton === 2 && <OtherFacilities/>}
           {activeButton === 3 && <Manus/>}
         </div>
+        
       </div>
       <Footer />
     </div>
   );
 }
 
-export default Treiningcentre;
+export default Trainingcenter;

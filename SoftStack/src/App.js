@@ -5,6 +5,10 @@ import Reservation from './Components/Admin/Reservation';
 import ClientDetailsPage from './Components/Admin/ClientDetailsPage';
 import Addhallsrooms from './Components/Admin/Addhallsrooms';
 import Donations from './Components/Admin/Donations';
+import TRcenter from './Components/Client/TRcenter';
+import Hall from './Components/Client/Hall';
+import Loginpage from './Components/Admin/Loginpage';
+
 
 function App() {
   return (
@@ -18,6 +22,12 @@ function App() {
           <Route path="/client-details" element={<ClientDetailsPage />} /> 
           <Route path='/Addhallsrooms' element={<Addhallsrooms/>} />
           <Route path='/donations' element={<Donations/>} />
+          <Route path='/TRcenter' element={<TRcenter/>} />
+          <Route path='/Loginpage' element={<Loginpage/>} />
+          
+          
+
+          
         </Routes>
       
       </Router>
