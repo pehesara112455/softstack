@@ -9,14 +9,14 @@ function Contact() {
     <div className="contact-page">
       <Navbar />
 
-      {/* Header Section */}
+      
       <div className="contact-header-section">
         <h1>GET IN TOUCH</h1>
         <p>Ready to discuss your event? We are here to help you plan the perfect occasion</p>
         <a href="tel:0112789459" className="call-button">CALL NOW</a>
       </div>
 
-      {/* Receipts / Donation Section */}
+      
       <div className="receipts-section">
         <a href="#" className="receipt-button">
           Payment Receipts Sending &gt;
@@ -33,10 +33,10 @@ function Contact() {
         </p>
       </div>
 
-      {/* Contact Info + Map + Business Hours */}
+      
       <div className="contact-info-section">
 
-        {/* Contact Info Columns - Centered Vertically */}
+        
         <div className="contact-info">
           <div className="info-item">
             <FaMapMarkerAlt className="icon" />
@@ -55,7 +55,7 @@ function Contact() {
           </div>
         </div>
 
-        {/* Map + Business Hours */}
+
         <div className="map-business-section">
           <iframe
             title="CEC Location"

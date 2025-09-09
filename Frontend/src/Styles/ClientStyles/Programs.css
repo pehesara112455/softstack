@@ -3,6 +3,17 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #f9f9f9;
+
+  padding-top: 80px;      
+  box-sizing: border-box;
+}
+
+
+.main-content {
+  flex: 1;                 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
 }
 
 .program-tabs {
@@ -36,8 +47,8 @@
 .donation-button {
   display: inline-block;
   padding: 12px 30px;
-  background-color: #ffe066; /* Chrome yellow */
-  color: #7f0404;           /* Text color */
+  background-color: #ffe066; 
+  color: #7f0404;           
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
@@ -45,7 +56,7 @@
 }
 
 .donation-button:hover {
-  background-color: q; /* Slightly darker yellow on hover */
+  background-color: #ffcc00; 
 }
 
 .program-cards {
@@ -64,6 +75,7 @@
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  flex: 1;   
 }
 
 .card-left {
@@ -100,4 +112,9 @@
   font-size: 1rem;
   color: #666;
   line-height: 1.6;
+}
+
+
+.footer {
+  margin-top: auto;
 }
