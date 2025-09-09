@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../firebase';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import '../../Styles/Adminstyles/Addhallsrooms.css';
 
 function AddRoomsForm({ onClose, editingRoom }) {
@@ -28,10 +28,11 @@ function AddRoomsForm({ onClose, editingRoom }) {
   }, [editingRoom]);
 
   const uploadImage = async (file) => {
-  const storageRef = ref(storage, `hallsrooms/${Date.now()}_${file.name}`);
+  const storageRef = ref(storage, `rooms/${Date.now()}_${file.name}`);
+  uploadBytes(storageRef, file);
   await uploadBytes(storageRef, file);
   return await getDownloadURL(storageRef);
-};
+  };
 
   const submitRoom = async (e) => {
     e.preventDefault();
@@ -79,7 +80,7 @@ function AddRoomsForm({ onClose, editingRoom }) {
   const onImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setRoom({ ...room, imageFile: file, imageURL: URL.createObjectURL(file) });
+      setRoom({ ...room, imageURL: URL.createObjectURL(file) });
     }
   };
 

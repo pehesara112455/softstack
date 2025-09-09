@@ -144,14 +144,14 @@
   z-index: 2000;
 }
 
-/* Modal Content (wrapper around .form-card) - SHADOW REMOVED */
+/* Modal Content (wrapper around .form-card) */
 .modal-content {
   position: relative;
-  background: transparent; 
+  background: transparent; /* form-card already has background */
   width: auto;
   max-width: 500px;
   animation: fadeIn 0.3s ease-in-out;
-  }
+}
 
 /* Close Button (top-right corner) */
 .close-btn {
@@ -171,7 +171,6 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  z-index: 2001;
 }
 
 .close-btn:hover {
@@ -195,19 +194,17 @@
   box-sizing: border-box; 
 }
 
-/* FORM CARD - SHADOW REMOVED */
 .form-card {
   background: #fff;
   border-radius: 12px;
-  /* box-shadow removed */
+  box-shadow: 0 2px 15px rgba(122, 24, 24, 0.15);
   padding: 1.8rem 2rem;
   width: 100%;
   max-width: 420px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: auto;
-  border: 1px solid #e0e0e0; 
+  margin: auto ;       
 }
 
 .form-title {
@@ -216,13 +213,6 @@
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
-}
-
-/* Form Field Container */
-.form-field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 .form-card label {
@@ -242,42 +232,6 @@
   outline: none;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
-.form-card input[type="text"]:focus,
-.form-card input[type="number"]:focus,
-.form-card select:focus {
-  border-color: #7a1818;
-}
-
-/* Error States */
-.form-card input.error,
-.form-card select.error,
-.image-upload-box.error {
-  border-color: #d32f2f;
-}
-
-.error-text {
-  color: #d32f2f;
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
-  font-weight: 500;
-}
-
-.error-message {
-  background-color: #ffebee;
-  color: #c62828;
-  padding: 10px 12px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid #d32f2f;
-}
-
-.global-error {
-  background-color: #ffebee;
-  border: 1px solid #ffcdd2;
 }
 
 .image-upload-box {
@@ -292,11 +246,6 @@
   color: #a87a7a;
   overflow: hidden;
   background-color: #eee;
-  transition: border-color 0.3s ease;
-}
-
-.image-upload-box:hover {
-  border-color: #7a1818;
 }
 
 .image-upload-box img {
@@ -322,13 +271,8 @@
   transition: background-color 0.3s ease;
 }
 
-.clear-btn:hover:not(:disabled) {
+.clear-btn:hover {
   background-color: #9a5a07;
-}
-
-.clear-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .submit-btn {
@@ -342,13 +286,8 @@
   transition: background-color 0.3s ease;
 }
 
-.submit-btn:hover:not(:disabled) {
+.submit-btn:hover {
   background-color: #5c100f;
-}
-
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .thumbnail {
@@ -366,39 +305,4 @@
   border-radius: 12px;
   background: #eee;
   color: #666;
-}
-
-/* Pagination styles */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding: 1rem 0;
-}
-
-.pagination button {
-  background-color: #7a1818;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.pagination button:hover:not(:disabled) {
-  background-color: #5c100f;
-}
-
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.pagination span {
-  font-weight: 600;
-  color: #7a1818;
 }

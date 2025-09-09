@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../../firebase';
+import { db, storage } from '../../firebase';
 import { collection, getDocs, updateDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import '../../Styles/Adminstyles/Addhallsrooms.css';
 import AdminNav from './AdminNav';
@@ -25,7 +25,7 @@ function AddHallsRooms() {
   // Pagination states
   const [currentHallsPage, setCurrentHallsPage] = useState(1);
   const [currentRoomsPage, setCurrentRoomsPage] = useState(1);
-  const rowsPerPage = 5;
+  const rowsPerPage = 4;
 
   useEffect(() => {
     // Real-time listener for halls
@@ -135,6 +135,7 @@ function AddHallsRooms() {
     <div className="admin-layout">
       <AdminNav />
       <div className="content-container">
+
         {/* HALLS */}
         <section className="section-container">
           <h2 className="section-title">HALLS</h2>
@@ -173,8 +174,7 @@ function AddHallsRooms() {
                     <td>{hall.capacity}</td>
                     <td>{hall.type}</td>
                     <td>{hall.extraHrs}</td>
-                    <td className="url-cell">{hall.imageURL}</td>
-
+                    <td>{hall.imageURL ? ( <img  src={hall.imageURL}  alt={hall.name}  style={{ width: "80px", height: "60px", objectFit: "cover", borderRadius: "6px" }}   />  ) : (  "No Image"  )}</td>
                     <td>{hall.amount}</td>
                     <td>
                       <button onClick={() => handleEditHall(hall.id)} className="action-btn edit-btn">✏</button>
@@ -248,7 +248,7 @@ function AddHallsRooms() {
                     <td>{room.name}</td>
                     <td>{room.capacity}</td>
                     <td>{room.type}</td>
-                    <td className="url-cell">{room.imageURL}</td>
+                    <td> {room.imageURL ? ( <img  src={room.imageURL}  alt={room.name}  style={{ width: "80px", height: "60px", objectFit: "cover", borderRadius: "6px" }}   />  ) : (  "No Image"  )}</td>
                     <td>{room.amount}</td>
                     <td>
                       <button onClick={() => handleEditRoom(room.id)} className="action-btn edit-btn">✏</button>
@@ -258,7 +258,7 @@ function AddHallsRooms() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" style={{ textAlign: "center" }}>
+                  <td colSpan="8" style={{ textAlign: "center" }}>
                     No rooms found
                   </td>
                 </tr>
