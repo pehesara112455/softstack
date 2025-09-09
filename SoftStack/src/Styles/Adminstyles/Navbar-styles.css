@@ -1,4 +1,9 @@
 .admin-nav {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
   background: #7F0404;
   width: 260px;
   height: 100vh;
@@ -7,11 +12,27 @@
   flex-direction: column;
   padding-top: 20px;
   overflow: hidden;
+
+  z-index: 1000;  
+
 }
 
 .admin-nav.collapsed {
   width: 60px; /* mini menu size */
 }
+
+
+
+/* push content so it doesn’t hide behind the sidebar */
+.content-container {
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+.admin-nav.collapsed ~ .content-container {
+  margin-left: 60px;
+}
+
 
 .nav-top {
   display: flex;

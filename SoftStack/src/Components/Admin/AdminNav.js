@@ -34,12 +34,14 @@ const AdminNav = () => {
       {isOpen && (
         <>
           <ul className="admin-nav-list">
-            <li><Link to="/admin/reservations">RESERVATIONS</Link></li>
-            <li><Link to="/admin/rooms-halls">ROOMS & HALLS</Link></li>
+
+            <li><Link to="/reservation">RESERVATIONS</Link></li>
+            <li><Link to="/addhallsrooms">ROOMS & HALLS</Link></li>
             <li><Link to="/admin/client-details">CLIENT DETAILS</Link></li>
             <li><Link to="/admin/blog-posts">BLOG POSTS</Link></li>
             <li><Link to="/admin/services">SERVICES</Link></li>
-            <li><Link to="/admin/donations">DONATIONS</Link></li>
+            <li><Link to="/donations">DONATIONS</Link></li>
+
           </ul>
 
           <div className="admin-nav-logout">

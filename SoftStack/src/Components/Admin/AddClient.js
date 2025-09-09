@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import '../../Styles/Adminstyles/ClientModalStyle.css';
 import { db } from '../../firebase';
@@ -5,6 +6,12 @@ import { collection, addDoc, serverTimestamp, updateDoc, doc } from 'firebase/fi
 
 function ClientModal({ onClose, initialData }) {
   // Initialize form state with initialData if provided (for editing), else empty for adding
+
+
+
+
+
+
   const [form, setForm] = useState({
     companyName: '',
     address: '',
@@ -15,6 +22,7 @@ function ClientModal({ onClose, initialData }) {
     nic: '',
     personContactNumber: ''
   });
+
 
   useEffect(() => {
     if (initialData) {
@@ -31,18 +39,8 @@ function ClientModal({ onClose, initialData }) {
     }
   }, [initialData]);
 
-  const handleClear = () => {
-    setForm({
-      companyName: '',
-      address: '',
-      type: '',
-      contactNumber: '',
-      email: '',
-      contactPerson: '',
-      nic: '',
-      personContactNumber: ''
-    });
-  };
+
+
 
   const handleSubmit = async () => {
     try {
@@ -66,9 +64,14 @@ function ClientModal({ onClose, initialData }) {
     }
   };
 
+
+
+
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+
       <button
   className="close-btn"
   type="button"
@@ -89,10 +92,13 @@ function ClientModal({ onClose, initialData }) {
 
         <h2 style={{ color: '#7a1818', textAlign: 'center', fontWeight: 700 }}>
           {initialData ? 'EDIT CLIENT' : 'ADD A NEW CLIENT'}
+
+       
         </h2>
         <b>COMPANY / ORGANIZATION DETAILS</b>
         <div className="form-row">
           <label>Company Name</label>
+
           <input
             value={form.companyName}
             onChange={e => setForm({ ...form, companyName: e.target.value })}
@@ -121,6 +127,8 @@ function ClientModal({ onClose, initialData }) {
             value={form.type}
             onChange={e => setForm({ ...form, type: e.target.value })}
           >
+
+
             <option value="">Select</option>
             <option value="Company">Company</option>
             <option value="Organization">Organization</option>
@@ -129,6 +137,7 @@ function ClientModal({ onClose, initialData }) {
         <hr className="section-divider" />
         <div className="form-row">
           <label>Contact person</label>
+
           <input
             value={form.contactPerson}
             onChange={e => setForm({ ...form, contactPerson: e.target.value })}
@@ -145,13 +154,18 @@ function ClientModal({ onClose, initialData }) {
             value={form.nic}
             onChange={e => setForm({ ...form, nic: e.target.value })}
           />
+
         </div>
         <div className="button-row">
           <button className="clear-btn" type="button" onClick={handleClear}>
             Clear
           </button>
           <button className="submit-btn" type="button" onClick={handleSubmit}>
+
             {initialData ? 'Update' : 'Submit'}
+
+            Submit
+
           </button>
         </div>
       </div>

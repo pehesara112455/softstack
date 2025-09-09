@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { collection, addDoc, serverTimestamp, getDocs } from 'firebase/firestore';
@@ -105,6 +106,8 @@ function AddReservation({ onClose }) {
   const removeRoom = idx => setRoomList(roomList.filter((_, i) => i !== idx));
 
   // Add meal utility
+
+
   const addMeal = () => {
     if (!newMeal.meal || !newMeal.qty || !newMeal.amount) return;
     setMealList([...mealList, { ...newMeal }]);
@@ -112,7 +115,9 @@ function AddReservation({ onClose }) {
   };
   const removeMeal = idx => setMealList(mealList.filter((_, i) => i !== idx));
 
+
   // Add item utility
+
   const addItem = () => {
     if (!newItem.item || !newItem.amount) return;
     setItemList([...itemList, { ...newItem }]);
@@ -120,13 +125,18 @@ function AddReservation({ onClose }) {
   };
   const removeItem = idx => setItemList(itemList.filter((_, i) => i !== idx));
 
+
   // Calculate total amount
+
+
   const totalRooms = roomList.reduce((sum, r) => sum + (r.qty * r.perUnit), 0);
   const totalMeals = mealList.reduce((sum, m) => sum + (m.qty * m.amount), 0);
   const totalItems = itemList.reduce((sum, i) => sum + Number(i.amount), 0);
   const totalAmount = totalRooms + totalMeals + totalItems;
 
+
   // Submit handler
+
   const handleSubmit = async () => {
     await addDoc(collection(db, 'reservations'), {
       client,
@@ -135,10 +145,13 @@ function AddReservation({ onClose }) {
       items: itemList,
       totalAmount,
       status: 'pending',
+
       createdAt: serverTimestamp(),
+
     });
     if (onClose) onClose();
   };
+
 
   return (
     <div className="add-reservation-layout">
@@ -151,12 +164,17 @@ function AddReservation({ onClose }) {
         ×
       </button>
 
+
+  
+
+  
       {/* STEP 1 */}
       {step === 1 && (
         <div className="add-reservation-form">
           <h2>CLIENT DETAILS</h2>
           <div className="form-row">
             <label>Company Name</label>
+
             <Select
               options={clientOptions}
               value={selectedClient}
@@ -180,18 +198,22 @@ function AddReservation({ onClose }) {
           </div>
           <div className="form-row">
             <label>Date From</label>
+
             <input
               type="date"
               value={client.dateFrom}
               onChange={e => setClient({ ...client, dateFrom: e.target.value })}
             />
+
             <label>Date To</label>
+
             <input
               type="date"
               value={client.dateTo}
               onChange={e => setClient({ ...client, dateTo: e.target.value })}
             />
           </div>
+
 
           <hr className="section-divider" />
 
@@ -261,6 +283,7 @@ function AddReservation({ onClose }) {
             </div>
           )}
 
+
           <table className="summary-table">
             <thead>
               <tr>
@@ -276,30 +299,39 @@ function AddReservation({ onClose }) {
             <tbody>
               {roomList.map((r, idx) => (
                 <tr key={idx}>
+
                   <td>{r.name}</td>
+
                   <td>{r.type}</td>
                   <td>{r.qty}</td>
                   <td>{r.perUnit}</td>
                   <td>{r.qty * r.perUnit}</td>
                   <td>{r.dateFrom} - {r.dateTo}</td>
+
                   <td>
                     <button type="button" className="del-btn" onClick={() => removeRoom(idx)}>×</button>
                   </td>
+
                 </tr>
               ))}
             </tbody>
           </table>
 
+
           <div className="step-btn-row">
             <button className="next-btn" onClick={() => setStep(2)}>Next</button>
+
           </div>
         </div>
       )}
+
+
 
       {step === 2 && (
         <div className="add-reservation-form">
           <h2>MEALS</h2>
           <div className="form-row">
+
             <label>Meal</label>
             <input
               value={newMeal.meal}
@@ -319,6 +351,7 @@ function AddReservation({ onClose }) {
             <label>Amount</label>
             <input
               type="number"
+
               value={newMeal.amount}
               onChange={e => setNewMeal({ ...newMeal, amount: Number(e.target.value) })}
             />
@@ -326,6 +359,7 @@ function AddReservation({ onClose }) {
           </div>
           <table className="summary-table">
             <thead>
+
               <tr>
                 <th>Meal</th>
                 <th>Description</th>
@@ -333,6 +367,7 @@ function AddReservation({ onClose }) {
                 <th>Total Amount</th>
                 <th></th>
               </tr>
+
             </thead>
             <tbody>
               {mealList.map((m, idx) => (
@@ -346,6 +381,7 @@ function AddReservation({ onClose }) {
               ))}
             </tbody>
           </table>
+
 
           <hr className="section-divider" />
 
@@ -364,6 +400,7 @@ function AddReservation({ onClose }) {
             <label>Amount</label>
             <input
               type="number"
+
               value={newItem.amount}
               onChange={e => setNewItem({ ...newItem, amount: Number(e.target.value) })}
             />
@@ -371,12 +408,14 @@ function AddReservation({ onClose }) {
           </div>
           <table className="summary-table">
             <thead>
+
               <tr>
                 <th>Item</th>
                 <th>Description</th>
                 <th>Amount</th>
                 <th></th>
               </tr>
+
             </thead>
             <tbody>
               {itemList.map((i, idx) => (
@@ -390,21 +429,27 @@ function AddReservation({ onClose }) {
             </tbody>
           </table>
 
+
+
           <div className="step-btn-row">
             <button className="back-btn" type="button" onClick={() => setStep(1)}>Back</button>
             <button
               className="calc-btn"
               type="button"
               onClick={() => alert('Total Amount: ' + totalAmount)}
+
             >
               Calculate
             </button>
+
             <button className="submit-btn" type="button" onClick={handleSubmit}>Confirm Reservation</button>
           </div>
         </div>
       )}
 
+
       {showClientModal && <AddClient onClose={() => setShowClientModal(false)} />}
+
     </div>
   );
 }

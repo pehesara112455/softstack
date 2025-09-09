@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase';
+
 import { collection, getDocs, updateDoc, doc, deleteDoc, orderBy, query, onSnapshot } from 'firebase/firestore';
 import '../../Styles/Adminstyles/Reservationstyle.css';
 import AdminNav from './AdminNav';
@@ -8,12 +9,14 @@ import { useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
+
 function Reservation() {
   // State declarations
   const [reservations, setReservations] = useState([]);
   const [editingAdvanceId, setEditingAdvanceId] = useState(null);
   const [editingAdvanceValue, setEditingAdvanceValue] = useState('');
   const [search, setSearch] = useState('');
+
   const [filterStatus, setFilterStatus] = useState('all');
   const [showAdd, setShowAdd] = useState(false);
  
@@ -33,6 +36,7 @@ function Reservation() {
     const snap = await getDocs(q);
     setReservations(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
   };
+
 
   // Inline advance editing and saving
   const handleAdvanceEdit = (id, value) => {
@@ -63,6 +67,7 @@ function Reservation() {
       fetchReservations();
     }
   };
+
 
   // Navigate to edit reservation page
   const handleEdit = (id) => {
@@ -260,6 +265,7 @@ function generatePDFInvoice(reservation) {
 );
 
 
+
   return (
     <div className="admin-layout" style={{ display: 'flex', minHeight: '100vh' }}>
       {/* Sidebar */}
@@ -275,6 +281,7 @@ function generatePDFInvoice(reservation) {
         ) : (
           <>
             <h2 style={{ color: '#7a1818', marginBottom: '1.5rem' }}>RESERVATIONS</h2>
+
 
             <div className="reservation-actions" style={{
               display: 'flex',
@@ -317,7 +324,9 @@ function generatePDFInvoice(reservation) {
             <table className="reservation-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
                 <tr>
+
                   
+
                   <th>Client Name</th>
                   <th>Contact</th>
                   <th>Date</th>
@@ -330,7 +339,9 @@ function generatePDFInvoice(reservation) {
               <tbody>
                 {filteredReservations.map(r => (
                   <tr key={r.id} style={{ borderBottom: '1.5px solid #eaeaea' }}>
+
                     
+
                     <td>{r.client?.companyName}</td>
                     <td>{r.client?.contact}</td>
                     <td>{r.client?.dateFrom} - {r.client?.dateTo}</td>
@@ -371,6 +382,7 @@ function generatePDFInvoice(reservation) {
                     </td>
                     <td className="action-cell" style={{ display: 'flex', gap: '0.5rem' }}>
                       <button
+
                         type="button"
                         className="action-btn edit-btn"
                         aria-label="Edit row"
@@ -380,11 +392,13 @@ function generatePDFInvoice(reservation) {
                         <span role="img" style={{ fontSize: '1.2em' }}>✏️</span>
                       </button>
 
+
                       <button
                         className="action-btn delete-btn"
                         title="Delete"
                         onClick={() => handleDelete(r.id)}
                         style={{ cursor: 'pointer' }}
+
                       >
                         🗑️
                       </button>
@@ -396,6 +410,7 @@ function generatePDFInvoice(reservation) {
                       >
                         View
                       </button>
+
 
                     </td>
                   </tr>

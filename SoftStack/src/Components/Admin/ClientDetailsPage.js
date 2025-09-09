@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../firebase'; // adjust path as needed
+
 import { collection, onSnapshot, orderBy, query , deleteDoc, doc} from 'firebase/firestore';
+
 import '../../Styles/Adminstyles/ClientDetailsPageStyle.css';
 import AdminNav from './AdminNav';
 import AddClient from './AddClient';
@@ -9,6 +11,7 @@ import AddClient from './AddClient';
 function ClientDetailsPage() {
   const [clients, setClients] = useState([]);
   const [search, setSearch] = useState('');
+
   const [showClientModal, setShowClientModal] = useState(false);
   const [editClient, setEditClient] = useState(null); // client to edit
 
@@ -26,11 +29,13 @@ function ClientDetailsPage() {
   }, []);
 
   // Filtered clients by search term
+
   const filteredClients = clients.filter(
     c =>
       c.companyName?.toLowerCase().includes(search.toLowerCase()) ||
       c.contactPerson?.toLowerCase().includes(search.toLowerCase())
   );
+
 
   const handleDeleteClient = async (id) => {
   if (window.confirm('Are you sure you want to delete this client?')) {
@@ -50,6 +55,7 @@ function ClientDetailsPage() {
       <AdminNav />
 
       {/* Main Content */}
+
       <main className="client-details-main">
         <h2>CLIENT DETAILS</h2>
         <div className="top-bar">
@@ -60,11 +66,14 @@ function ClientDetailsPage() {
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
+
             <button className="search-btn" aria-label="Search">
+
               <span role="img" aria-label="search">🔍</span>
             </button>
           </div>
           <button
+
             type="button"
             className="add-client-btn"
             onClick={() => {
@@ -75,6 +84,7 @@ function ClientDetailsPage() {
             Add Client
           </button>
         </div>
+
 
         <table className="client-table">
           <thead>
@@ -90,6 +100,7 @@ function ClientDetailsPage() {
             </tr>
           </thead>
           <tbody>
+
             {filteredClients.length > 0 ? (
               filteredClients.map(client => (
                 <tr key={client.id}>
@@ -139,6 +150,7 @@ function ClientDetailsPage() {
             initialData={editClient} // null when adding, client data when editing
           />
         )}
+
       </main>
     </div>
   );
