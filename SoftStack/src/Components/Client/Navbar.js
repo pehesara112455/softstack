@@ -19,9 +19,9 @@ function Navbar(){
         <li><a href="/">Home</a></li>
         <li><a href="/About">About</a></li>
         <li><a href="/TRcenter">Training Center</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Programs</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/Services">Services</a></li>
+        <li><a href="/Programs">Programs</a></li>
+        <li><a href="/Contact">Contact</a></li>
       </ul>
     </nav>
   );
