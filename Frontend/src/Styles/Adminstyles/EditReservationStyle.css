@@ -15,6 +15,20 @@
   flex-direction: column;
 }
 
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.modal-content {
+  position: relative;
+}
+
+
 h2 {
   color: #7a1818;
   font-size: 1.5em;

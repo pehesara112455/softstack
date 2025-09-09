@@ -77,6 +77,7 @@ function AddHallsRooms() {
     <div className="admin-layout">
       <AdminNav />
       <div className="content-container">
+      
         {/* HALLS */}
         <section className="section-container">
           <h2 className="section-title">HALLS</h2>

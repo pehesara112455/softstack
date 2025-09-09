@@ -41,6 +41,24 @@ function AddHallsForm({ onClose }) {
 
   return (
   <div className="form-container">
+  <button
+  className="close-btn"
+  type="button"
+  onClick={onClose}
+  style={{
+    position: 'absolute',
+    top: '12px',
+    right: '18px',
+    fontSize: '22px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  }}
+  aria-label="Close"
+>
+  ×
+</button>
+
     <form className="form-card" onSubmit={submitHall} noValidate>
       <h2 className="form-title">ADD A NEW HALL</h2>
       

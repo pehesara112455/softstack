@@ -130,6 +130,25 @@ function EditReservation() {
 
   return (
     <div className="edit-res-layout">
+    <button
+  className="close-btn"
+  type="button"
+  onClick={() => navigate(-1)}  // This will go back one page
+  style={{
+    position: 'absolute',
+    top: '12px',
+    right: '18px',
+    fontSize: '22px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  }}
+  aria-label="Close"
+>
+  ×
+</button>
+
+
       <AdminNav />
       <main className="edit-res-main">
         <h2>ADMIN - EDIT RESERVATION</h2>

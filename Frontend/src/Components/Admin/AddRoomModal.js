@@ -50,6 +50,24 @@ function AddRoomModal({ onClose, onSubmit, initialData }) {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+      <button
+  className="close-btn"
+  type="button"
+  onClick={onClose}
+  style={{
+    position: 'absolute',
+    top: '12px',
+    right: '18px',
+    fontSize: '22px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  }}
+  aria-label="Close"
+>
+  ×
+</button>
+
         <h2>{initialData ? 'EDIT ROOM OR HALL' : 'ADD ROOM OR HALL'}</h2>
         <div className="form-row">
           <label>Room / Hall</label>

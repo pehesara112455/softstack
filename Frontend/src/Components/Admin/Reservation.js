@@ -14,9 +14,9 @@ function Reservation() {
   const [editingAdvanceId, setEditingAdvanceId] = useState(null);
   const [editingAdvanceValue, setEditingAdvanceValue] = useState('');
   const [search, setSearch] = useState('');
-  const [filterStatus, setFilterStatus] = useState('pending');
+  const [filterStatus, setFilterStatus] = useState('all');
   const [showAdd, setShowAdd] = useState(false);
-
+ 
   const navigate = useNavigate();
 
   // Fetch reservations on mount with real-time updates
@@ -254,10 +254,11 @@ function generatePDFInvoice(reservation) {
 }
 
   // Filter and search reservations
-  const filteredReservations = reservations.filter(r =>
-    r.status === filterStatus &&
-    (search === '' || (r.client?.companyName ?? '').toLowerCase().includes(search.toLowerCase()))
-  );
+ const filteredReservations = reservations.filter(r =>
+  (filterStatus === 'all' || r.status === filterStatus) &&
+  (search === '' || (r.client?.companyName ?? '').toLowerCase().includes(search.toLowerCase()))
+);
+
 
   return (
     <div className="admin-layout" style={{ display: 'flex', minHeight: '100vh' }}>
@@ -281,11 +282,17 @@ function generatePDFInvoice(reservation) {
               gap: '1rem',
               marginBottom: '1.5rem'
             }}>
-              <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={{ padding: '0.5rem', borderRadius: '5px' }}>
-                <option value="pending">Pending</option>
-                <option value="confirmed">Confirmed</option>
-                <option value="cancelled">Cancelled</option>
-              </select>
+              <select
+  value={filterStatus}
+  onChange={e => setFilterStatus(e.target.value)}
+  style={{ padding: '0.5rem', borderRadius: '5px' }}
+>
+  <option value="all">All</option>
+  <option value="pending">Pending</option>
+  <option value="confirmed">Confirmed</option>
+  <option value="cancelled">Cancelled</option>
+</select>
+
 
               <input
                 type="search"
@@ -310,7 +317,7 @@ function generatePDFInvoice(reservation) {
             <table className="reservation-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
                 <tr>
-                  <th>ID</th>
+                  
                   <th>Client Name</th>
                   <th>Contact</th>
                   <th>Date</th>
@@ -323,7 +330,7 @@ function generatePDFInvoice(reservation) {
               <tbody>
                 {filteredReservations.map(r => (
                   <tr key={r.id} style={{ borderBottom: '1.5px solid #eaeaea' }}>
-                    <td>{r.id}</td>
+                    
                     <td>{r.client?.companyName}</td>
                     <td>{r.client?.contact}</td>
                     <td>{r.client?.dateFrom} - {r.client?.dateTo}</td>
