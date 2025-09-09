@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../firebase';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
@@ -5,11 +6,14 @@ import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage
 import '../../Styles/Adminstyles/Addhallsrooms.css';
 
 function AddRoomsForm({ onClose, editingRoom }) {
+
   const [room, setRoom] = useState({
     name: '',
     capacity: '',
     type: '',
     amount: '',
+
+
     imageFile: null,
     imageURL: ''
   });
@@ -75,6 +79,7 @@ function AddRoomsForm({ onClose, editingRoom }) {
 
   const clearForm = () => {
     setRoom({ name: '', capacity: '', type: '', amount: '', imageFile: null, imageURL: '' });
+
   };
 
   const onImageChange = (e) => {
@@ -86,7 +91,9 @@ function AddRoomsForm({ onClose, editingRoom }) {
 
   return (
     <form className="form-card" onSubmit={submitRoom} noValidate>
+
       <h2 className="form-title">{editingRoom ? "EDIT ROOM" : "ADD A NEW ROOM"}</h2>
+
 
       <label>Room Name</label>
       <input type="text" value={room.name} onChange={e => setRoom({ ...room, name: e.target.value })} required />
@@ -97,8 +104,10 @@ function AddRoomsForm({ onClose, editingRoom }) {
       <label>Type</label>
       <select value={room.type} onChange={e => setRoom({ ...room, type: e.target.value })} required>
         <option value="">-- Select Type --</option>
+
         <option value="A/C">A/C</option>
         <option value="Non A/C">Non A/C</option>
+
       </select>
 
       <label>Amount</label>
@@ -112,10 +121,14 @@ function AddRoomsForm({ onClose, editingRoom }) {
 
       <div className="form-btn-row">
         <button type="button" className="clear-btn" onClick={clearForm}>Clear</button>
+
         <button type="submit" className="submit-btn">{editingRoom ? "Update" : "Submit"}</button>
+
       </div>
     </form>
   );
 }
 
+
 export default AddRoomsForm;
+

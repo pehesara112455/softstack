@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../firebase';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
@@ -5,12 +6,14 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import '../../Styles/Adminstyles/Addhallsrooms.css';
 
 function AddHallsForm({ onClose, editingHall }) {
+
   const [hall, setHall] = useState({
     name: '',
     capacity: '',
     type: '',
     extraHrs: '',
     amount: '',
+
     imageFile: null,
     imageURL: ''
   });
@@ -77,6 +80,7 @@ function AddHallsForm({ onClose, editingHall }) {
 
   const clearForm = () => {
     setHall({ name: '', capacity: '', type: '', extraHrs: '', amount: '', imageFile: null, imageURL: '' });
+
   };
 
   const onImageChange = (e) => {
@@ -87,8 +91,31 @@ function AddHallsForm({ onClose, editingHall }) {
   };
 
   return (
+
+  <div className="form-container">
+  <button
+  className="close-btn"
+  type="button"
+  onClick={onClose}
+  style={{
+    position: 'absolute',
+    top: '12px',
+    right: '18px',
+    fontSize: '22px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  }}
+  aria-label="Close"
+>
+  ×
+</button>
+
+    
+
     <form className="form-card" onSubmit={submitHall} noValidate>
       <h2 className="form-title">{editingHall ? "EDIT HALL" : "ADD A NEW HALL"}</h2>
+
       
       <label>Hall Name</label>
       <input type="text" value={hall.name} onChange={e => setHall({ ...hall, name: e.target.value })} required />
@@ -99,11 +126,13 @@ function AddHallsForm({ onClose, editingHall }) {
       <label>Type</label>
       <select value={hall.type} onChange={e => setHall({ ...hall, type: e.target.value })} required>
         <option value="">-- Select Type --</option>
+
         <option value="A/C">A/C</option>
         <option value="Non A/C">Non A/C</option>
       </select>
 
       <label>Extra Hour (Optional)</label>
+
       <input type="text" value={hall.extraHrs} onChange={e => setHall({ ...hall, extraHrs: e.target.value })} />
 
       <label>Amount</label>
@@ -117,10 +146,14 @@ function AddHallsForm({ onClose, editingHall }) {
 
       <div className="form-btn-row">
         <button type="button" className="clear-btn" onClick={clearForm}>Clear</button>
+
+
+
         <button type="submit" className="submit-btn">{editingHall ? "Update" : "Submit"}</button>
       </div>
     </form>
   );
+
 }
 
 export default AddHallsForm;
