@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import "../../Styles/Adminstyles/Navbar-styles.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+
+
+
 const AdminNav = () => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(true); // initially visible
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleLogout = () => {
-    // Add your logout logic here
-    // localStorage.removeItem("authToken");
+    // Logout logic here
     navigate("/login");
   };
 
@@ -49,6 +51,10 @@ const AdminNav = () => {
           </div>
         </>
       )}
+
+      <div className="admin-content">
+        
+      </div>
     </div>
   );
 };
