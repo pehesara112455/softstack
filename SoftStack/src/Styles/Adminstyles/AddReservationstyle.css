@@ -1,0 +1,120 @@
+.add-reservation-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #fdfdfd;
+}
+
+
+
+
+.add-reservation-form {
+  flex: 1;
+  margin: 30px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  padding: 36px 48px 24px 48px;
+}
+.form-row {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 22px;
+  align-items: center;
+}
+.form-row label {
+  color: #7a1818;
+  font-weight: 600;
+  margin-right: 6px;
+  width: 120px;
+}
+input, select, textarea {
+  border-radius: 6px;
+  font-size: 1em;
+  border: 1.5px solid #bebebe;
+  padding: 8px;
+  min-width: 120px;
+}
+
+.add-client-btn {
+  background: #e98b1b;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.5px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+}
+.add-client-btn:hover,
+.add-client-btn:focus {
+  background: #c77614;
+  transform: scale(1.04);
+  outline: none;
+}
+
+
+
+.add-btn {
+  background: #7a1818;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  margin-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.del-btn {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 12px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.4em;
+  background: #fcf6f6;
+}
+.summary-table th, .summary-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ebe7e7;
+}
+.section-divider {
+  border: none;
+  border-top: 2.5px solid #7a1818;
+  margin: 38px 0 28px 0;
+}
+.step-btn-row {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
+.next-btn, .back-btn, .calc-btn, .submit-btn {
+  padding: 10px 26px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.next-btn {
+  background: #969696; color: #fff;
+}
+.back-btn {
+  background: #969696; color: #fff;
+}
+.calc-btn {
+  background: #d97706; color: #fff;
+}
+.submit-btn {
+  background: #7a1818; color: #fff;
+}
