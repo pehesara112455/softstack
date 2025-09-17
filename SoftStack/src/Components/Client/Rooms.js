@@ -7,6 +7,7 @@ import Ac from "../../Resousers/Ac.png";
 import wifi from "../../Resousers/wifi.png";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase";
+import room1 from "../../Resousers/Room1.png"
 
 function RoomsPage() {
   const [rooms, setRooms] = useState([]);
@@ -33,7 +34,7 @@ function RoomsPage() {
     fetchRooms();
   }, []);
 
-  // Fetch reservations when search is triggered
+
   const handleSearch = async () => {
     if (!selectedDate) return;
 
@@ -47,7 +48,7 @@ function RoomsPage() {
     }
   };
 
-  // Check if a room is reserved on the selected date
+
   const isRoomReserved = (roomId) => {
     return reservations.some(res =>
       res.rooms?.some(r =>
@@ -92,7 +93,7 @@ function RoomsPage() {
               <span
                 className="available-label"
                 style={{
-                  backgroundColor: reserved ? "#e74c3c" : "#2ecc71",
+                  backgroundColor: reserved ? "#bb2413ff" : "#0fa14cff",
                   color: "#fff",
                   padding: "4px 8px",
                   borderRadius: "4px",
@@ -102,7 +103,7 @@ function RoomsPage() {
                 {reserved ? "Reserved" : "Available"}
               </span>
 
-              <img src={room.imageUrl} alt={room.name} className="Hall1" />
+              <img src={room1} alt={room.name} className="Hall1" />
 
               <div className="Lables1">
                 <label className="hall1lable">{room.name}</label>
