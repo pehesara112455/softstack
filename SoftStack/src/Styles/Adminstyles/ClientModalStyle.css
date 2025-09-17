@@ -1,0 +1,41 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(120,120,120,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal-content {
+  background: #fff;
+  padding: 36px 48px 24px 48px;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.16);
+  min-width: 540px;
+}
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  margin-top: 22px;
+}
+.clear-btn {
+  background: #e98b1b;
+  color: #fff;
+  padding: 8px 28px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.submit-btn {
+  background: #7a1818;
+  color: #fff;
+  padding: 8px 28px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
