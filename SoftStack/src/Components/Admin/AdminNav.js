@@ -38,10 +38,10 @@ const AdminNav = () => {
           <ul className="admin-nav-list">
 
             <li><Link to="/reservation">RESERVATIONS</Link></li>
-            <li><Link to="/addhallsrooms">ROOMS & HALLS</Link></li>
-            <li><Link to="/clientDetails">CLIENT DETAILS</Link></li>
+            <li><Link to="/add-halls-rooms">ROOMS & HALLS</Link></li>
+            <li><Link to="/client-details">CLIENT DETAILS</Link></li>
             <li><Link to="/blog">BLOG POSTS</Link></li>
-            <li><Link to="/services">SERVICES</Link></li>
+            <li><Link to="/admin-services">SERVICES</Link></li>
             <li><Link to="/donations">DONATIONS</Link></li>
 
           </ul>
