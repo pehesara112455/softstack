@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { db } from '../../firebase';
 import { collection, getDocs, updateDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
-import '../../Styles/Adminstyles/Addhallsrooms.css';
+import '../../Styles/Adminstyles/addhallsrooms.css';
 import AdminNav from './AdminNav';
 import AddHallsForm from './AddHallsForm';
 import AddRoomsForm from './AddRoomsForm';
