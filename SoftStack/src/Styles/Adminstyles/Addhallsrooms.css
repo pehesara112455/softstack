@@ -8,12 +8,17 @@
   padding: 2rem;
   background: #ffffff;
   overflow-x: auto;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 .section-container {
   background-color: #fff5f5;
   padding: 1rem 1.5rem;
   border-radius: 8px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   box-shadow: 0 0 8px rgba(124, 24, 24, 0.1);
 }
 
@@ -62,6 +67,8 @@
 
 .data-table {
   width: 100%;
+  max-width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
   font-size: 0.9rem;
   color: #7a1818;
@@ -137,46 +144,25 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.6);
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  overflow: hidden;
 }
 
 /* Modal Content (wrapper around .form-card) */
 .modal-content {
   position: relative;
-  background: transparent; /* form-card already has background */
+  background: #fff;
   width: auto;
   max-width: 500px;
   animation: fadeIn 0.3s ease-in-out;
+  border-radius: 12px;
 }
 
-/* Close Button (top-right corner) */
-.close-btn {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #7a1818;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
 
-.close-btn:hover {
-  background: #7a1818;
-  color: #fff;
-}
 
 /* Animation */
 @keyframes fadeIn {
@@ -192,12 +178,13 @@
   background: #f9f9f9;    
   padding: 2rem;
   box-sizing: border-box; 
+  overflow: hidden;
 }
 
 .form-card {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 15px rgba(122, 24, 24, 0.15);
+  box-shadow: none;
   padding: 1.8rem 2rem;
   width: 100%;
   max-width: 420px;
@@ -305,4 +292,8 @@
   border-radius: 12px;
   background: #eee;
   color: #666;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
