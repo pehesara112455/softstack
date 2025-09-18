@@ -10,20 +10,6 @@
   overflow-x: auto;
 }
 
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-.modal-content {
-  position: relative;
-}
-
-
 .section-container {
   background-color: #fff5f5;
   padding: 1rem 1.5rem;
