@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
-
-
 import { db } from '../../firebase';
 import { collection, getDocs, updateDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import '../../Styles/Adminstyles/addhallsrooms.css';
@@ -148,8 +145,6 @@ function AddHallsRooms() {
       <AdminNav />
       <div className="content-container">
 
-
-
         {/* HALLS */}
         <section className="section-container">
           <h2 className="section-title">HALLS</h2>
@@ -174,14 +169,11 @@ function AddHallsRooms() {
           <table className="data-table">
             <thead>
               <tr>
-
                 <th>Name</th>
                 <th>Capacity</th>
                 <th>Type</th>
                 <th>Extra Hrs</th>
-
                 <th>Image</th>
-
                 <th>Amount</th>
                 <th>Actions</th>
               </tr>
@@ -258,12 +250,10 @@ function AddHallsRooms() {
           <table className="data-table">
             <thead>
               <tr>
-
                 <th>Name</th>
                 <th>Capacity</th>
                 <th>Type</th>
                 <th>Image</th>
-
                 <th>Amount</th>
                 <th>Actions</th>
               </tr>
