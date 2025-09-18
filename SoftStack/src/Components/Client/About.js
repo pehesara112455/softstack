@@ -20,7 +20,7 @@ function Aboutpage(){
         
             <div className="About-container">
                 <Navbar/>
-               <div className="content">
+               <div className="Content">
                   <div className="left-side">
         
         <img
@@ -114,7 +114,7 @@ function Aboutpage(){
       During the 1990s, CEC’s reach expanded significantly. It played an active role in the Free and Fair Elections campaign, contributed to the National Poverty Alleviation Program, and participated in global movements such as the Beijing Women's Conference. The Centre’s community-based programs particularly in education, health, and women's empowerment flourished across five districts. However, the political disappointments and funding cuts after 1996 led to a reduction in certain activities, especially children's programs. Nevertheless, the spirit of resilience remained strong. From 1999 to 2002, CEC revitalized its presence by reorganizing local networks and strengthening its governance and health programs. It promoted leadership, good governance, and community health under the theme of an "Alternative People’s Health Policy."
     </p>
   </div> 
-  <div className="content">
+  <div className="Content">
     <div className="left-side2">
       <div className="todaycec">
          <p className="intro-paragraph">

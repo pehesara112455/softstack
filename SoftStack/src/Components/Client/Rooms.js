@@ -1,117 +1,145 @@
-import React from "react";
-import '../Styles/Roomsstyle.css';
+import React, { useEffect, useState } from "react";
+import "../../Styles/ClientStyles/Roomsstyle.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Room1 from '../Resousers/Room1.png';
-import Room2 from '../Resousers/Room2.png';
+import Person from "../../Resousers/Person.png";
+import Ac from "../../Resousers/Ac.png";
+import wifi from "../../Resousers/wifi.png";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { db } from "../../firebase";
+import room1 from "../../Resousers/Room1.png"
 
-import prime_calendar from '../Resousers/prime_calendar.png';
-import hall1 from '../Resousers/hall1.png';
-import Person from '../Resousers/Person.png';
-import Ac from '../Resousers/Ac.png';
-import wifi from '../Resousers/wifi.png';
+function RoomsPage() {
+  const [rooms, setRooms] = useState([]);
+  const [reservations, setReservations] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
+
+  // Fetch rooms on mount
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const roomsRef = collection(db, "rooms");
+        const sortedQuery = query(roomsRef, orderBy("name"));
+        const snapshot = await getDocs(sortedQuery);
+        const data = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setRooms(data);
+      } catch (error) {
+        console.error("Error fetching rooms:", error);
+      }
+    };
+
+    fetchRooms();
+  }, []);
 
 
-function halls(){
-    return(<div className="content-container">
-          <div className="Search">
-            <p>Date</p>
-            <input type="text" className="date" placeholder=" " />
-            <img src={prime_calendar} alt="calendar" className="calender"/>
-            <button className="Search-button">🔍 Search</button>
-          </div>
-           <button className="payment-button">For payments 💰</button>
-          <div className="carts">
-            
-            <div className="cart1">
-              <span className="available-label">Available</span>
+  const handleSearch = async () => {
+    if (!selectedDate) return;
 
-              <img src={Room1} alt="hall1" className="Hall1"/>
-              <div className="lables1">
-                <label htmlFor="Hallname" className="Hall1lable">ROOM No.1</label>
-                <label htmlFor="Hallname" className="Hall1time">Double room</label>
+    try {
+      const resRef = collection(db, "reservations");
+      const snapshot = await getDocs(resRef);
+      const data = snapshot.docs.map(doc => doc.data());
+      setReservations(data);
+    } catch (error) {
+      console.error("Error fetching reservations:", error);
+    }
+  };
+
+
+  const isRoomReserved = (roomId) => {
+    return reservations.some(res =>
+      res.rooms?.some(r =>
+        r.room === roomId && r.dates?.includes(selectedDate)
+      )
+    );
+  };
+
+  return (
+    <div className="Content-container">
+      <Navbar />
+
+      <div className="Search">
+        <p>Date</p>
+        <input
+          type="date"
+          className="date"
+          value={selectedDate}
+          onChange={e => setSelectedDate(e.target.value)}
+        />
+        <button className="Search-button" onClick={handleSearch}>
+          🔍 Search
+        </button>
+      </div>
+
+      <button
+        className="payment-button"
+        onClick={() => {
+          window.location.href =
+            "mailto:someone@example.com?subject=Payment%20Request&body=Hi,%20I'd%20like%20to%20make%20a%20payment.";
+        }}
+      >
+        For payments 💰
+      </button>
+
+      <div className="cartss">
+        {rooms.map(room => {
+          const reserved = isRoomReserved(room.id);
+
+          return (
+            <div key={room.id} className="cart1">
+              <span
+                className="available-label"
+                style={{
+                  backgroundColor: reserved ? "#bb2413ff" : "#0fa14cff",
+                  color: "#fff",
+                  padding: "4px 8px",
+                  borderRadius: "4px",
+                  fontWeight: "bold"
+                }}
+              >
+                {reserved ? "Reserved" : "Available"}
+              </span>
+
+              <img src={room1} alt={room.name} className="Hall1" />
+
+              <div className="Lables1">
+                <label className="hall1lable">{room.name}</label>
+                <label className="Hall1time">{room.type}</label>
+
                 <div className="icons">
                   <div className="chair">
-                    <img src={Person}alt="chair"className="chairicon1"/>
+                    <img src={Person} alt="person" className="chairicon1" />
                   </div>
-                  <div className="Ac">
-                    <img src={Ac} alt="Ac"className="Acicon"/>
-                  </div>
-                  <div className="wifi">
-                    <img src={wifi} alt="wifi"className="wifiicon"/>
-                  </div>
-              </div>
-              <div className="lables2">
-                <label htmlFor="Hallname" className="Hall1lable1">1 Persons</label>
-                <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
-                <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
+                  {room.type.includes("A/C") && (
+                    <div className="Ac">
+                      <img src={Ac} alt="Ac" className="Acicon" />
+                    </div>
+                  )}
+                  {room.type.includes("WIFI") && (
+                    <div className="wifi">
+                      <img src={wifi} alt="wifi" className="wifiicon" />
+                    </div>
+                  )}
+                </div>
 
+                <div className="lables2">
+                  <label className="Hall1lable1">{room.capacity} Persons</label>
+                  <label className="Hall1lable2">{room.type}</label>
+                  {room.type.includes("WIFI") && (
+                    <label className="Hall1lable3">WIFI</label>
+                  )}
+                </div>
               </div>
-              </div>
-              
             </div>
-            <div className="cart1">
-              <span className="available-label">Available</span>
+          );
+        })}
+      </div>
 
-              <img src={Room2} alt="hall1" className="Hall1"/>
-              <div className="lables1">
-                <label htmlFor="Hallname" className="Hall1lable">ROOM No.2</label>
-                <label htmlFor="Hallname" className="Hall1time">Double room</label>
-                <div className="icons">
-                  <div className="chair">
-                    <img src={Person}alt="chair"className="chairicon"/>
-                  </div>
-                  <div className="Ac">
-                    <img src={Ac} alt="Ac"className="Acicon"/>
-                  </div>
-                  <div className="wifi">
-                    <img src={wifi} alt="wifi"className="wifiicon"/>
-                  </div>
-              </div>
-              <div className="lables2">
-                <label htmlFor="Hallname" className="Hall1lable1">2 Persons</label>
-                <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
-                <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
-
-              </div>
-              </div>
-              
-            </div>
-            <div className="cart1">
-              <span className="available-label">Available</span>
-
-              <img src={hall1} alt="hall1" className="Hall1"/>
-              <div className="lables1">
-                <label htmlFor="Hallname" className="Hall1lable">ROOM No.3</label>
-                <label htmlFor="Hallname" className="Hall1time">Single room</label>
-                <div className="icons">
-                  <div className="chair">
-                    <img src={Person}alt="chair"className="chairicon"/>
-                  </div>
-                  <div className="Ac">
-                    <img src={Ac} alt="Ac"className="Acicon"/>
-                  </div>
-                  <div className="wifi">
-                    <img src={wifi} alt="wifi"className="wifiicon"/>
-                  </div>
-              </div>
-              <div className="lables2">
-                <label htmlFor="Hallname" className="Hall1lable1">3 Persons</label>
-                <label htmlFor="Hallname" className="Hall1lable2">A/C</label>
-                <label htmlFor="Hallname" className="Hall1lable3">WIFI</label>
-
-              </div>
-              </div>
-              
-            </div>
-            
-            
-           
-            
-            
-             
-          </div> 
-        </div>)
+    </div>
+  );
 }
 
-export default halls;
+export default RoomsPage;

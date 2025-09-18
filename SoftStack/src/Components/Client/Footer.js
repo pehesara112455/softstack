@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Styles/ClientStyles/Footerstyle.css';
 
 
+
 function Footer (){
     return(
         
@@ -9,7 +10,7 @@ function Footer (){
             <div className="footer-content">
                 <div className="contactInfor">
                     <h3>Contact Info</h3>
-                    <p>No.117, Thalahena, Malabe, Sri Lanka</p>
+                    <p>No.117,, Malabe, Sri Lanka</p>
                     <p>0112 789 459 / 0777 666 272</p>
                     <p>cec@sltne.lk</p>
                     <p>cecntc13@gmail.com</p>
@@ -17,12 +18,12 @@ function Footer (){
                 <div className="quick-links">
                 <h3>Quick Links</h3>
                     <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Training Centre</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Foods</a></li>
+                    <li><a href="/About">About</a></li>
+                    <li><a href="/TRcenter">Training Centre</a></li>
+                    <li><a href="/Services">Services</a></li>
+                    <li><a href="/Programs">Blog</a></li>
+                    <li><a href="/Contact">Contact</a></li>
+                    
                     </ul>
                 </div>
                 <div className="follow-us">

@@ -1,4 +1,4 @@
-.carts {
+.cartss {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -11,7 +11,7 @@
 }
 
 .cart1 {
-  position: relative;
+ position: relative;
   flex: 0 1 calc(45% - 30px);
   background-color: white;
   border-radius: 33px;
@@ -22,9 +22,14 @@
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
-.lables1 {
+.cart1:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+.Lables1 {
   display: flex;
   background-color: white;
   width: 40%;
@@ -126,26 +131,28 @@
   z-index: 2;
 }
 .Search {
-  display: flex;
+   display: flex;
   background-color: #f0f0f0;
   flex-direction: row;
-  width: 90%;
-  max-width: 500px;
+  width: 60%;
   border: 2px solid black;
   border-radius: 12px;
-  margin: 40px auto;
+  margin: 0px auto;
   color: black;
   padding: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .date {
-  width: 40%;
+ width: 30%;
   height: 30px;
   background-color: white;
   border-radius: 12px;
   border: none;
   padding-right: 7%;
   margin: 10px 0;
+  font-size: 150%;
 }
 
 .Search p {
@@ -163,7 +170,7 @@
 
 .Search-button {
   width: 20%;
-  height: 30px;
+  height: 40px;
   text-align: center;
   background-color: maroon;
   color: white;
@@ -182,20 +189,25 @@
 }
 
 .payment-button {
-  position: absolute;
-  top: 53%;
-  left: 76%;
-  width: 10%;
-  height: 6%;
+  position: fixed;
+  top: 85%;
+  left: 92%;
+  width: 80px;              /* Equal width and height */
+  height: 80px;
   border: none;
   background-color: #EBDB73;
   color: maroon;
-  border-radius: 50px;
+  border-radius: 50%;
   font-weight: bold;
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;            /* Center content */
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  text-align: center;
 }
 
 .payment-button::before {
@@ -234,7 +246,7 @@
   
   background-color: #f0f0f0;
   flex-direction: row;
-  width: 120%;
+  width: 100%;
   
   border: 2px solid black;
   border-radius: 12px;
@@ -306,39 +318,31 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .carts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  width: 90%;
-  margin: 10px auto;
-  padding: 40px 0;
-  background-color: #f0f0f0;
-  box-sizing: border-box;
+     flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    width: 100%;
 }
 
 .cart1 {
-  position: relative;
-  display: flex;
-  width: 59%;
-  background-color: rgb(185, 92, 92);
-  border-radius: 33px;
-  color: maroon;
-  font-weight: bold;
-  margin: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
+   flex-direction: column;
+    flex: 1 1 100%;
+    margin: 10px 0;
+    border-radius: 20px;
+    padding: 15px;
+    
 }
 
-.lables1 {
-  display: flex;
-  background-color: white;
-  width: 40%;
-  height: 84%;
-  flex-direction: column;
-  margin-top: 20px;
+.Lables1 {
+
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    text-align: center;
+    align-self: center;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
 }
 
 .icons {
@@ -361,9 +365,9 @@
 }
 
 .Hall1 {
-  width: 50%;
-  height: 84%;
-  margin: 20px;
+  width: 100%;
+    height: auto;
+    margin: 0px 0;
 }
 
 .Hall1time {
@@ -371,7 +375,7 @@
   margin-top: 5px;
 }
 
-.Hall1lable {
+.hall1lable {
   margin: 0px;
   font-size: 150%;
 }

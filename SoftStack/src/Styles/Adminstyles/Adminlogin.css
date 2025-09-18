@@ -1,0 +1,82 @@
+/* Container styling */
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Login-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Header text */
+.Login-container p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: maroon;
+}
+
+/* Input group styling */
+.loginlable-and-texbox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.username,
+.password {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.labale1,
+.lable2 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color:rgb(0, 0, 0);
+}
+
+/* Textboxes */
+.user-textbox,
+.pw-textbox {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgb(134, 111, 111);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.user-textbox:focus,
+.pw-textbox:focus {
+  border-color: maroon;
+  outline: none;
+}
+
+/* Button styling */
+.Login-button {
+  background-color: maroon;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.Login-button:hover {
+  background-color: maroon;
+}
