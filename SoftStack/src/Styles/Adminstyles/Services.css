@@ -1,26 +1,52 @@
 .services-container {
+  
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+.sss{
   padding: 20px;
   font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 .services-header {
-  display: flex;
+   display: flex;
+   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+ background-color: #fff5f5;
   margin-bottom: 20px;
+  gap: 15px;
+  padding: 15px 20px;
+ border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+ width: 80%;
+}
+.actioncontainer{
+  display: flex;
+  height: auto;
+  width: 80%;
+  flex-direction: row;
+  gap: 5%;
 }
 
 .services-actions {
   display: flex;
-  gap: 15px;
+  gap: 100px;
   align-items: center;
 }
 
 .search-box input {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 250px;
+padding: 8px 12px;
+  border-radius: 10px;
+  width: 90%;
+  height: 1rem;
+  border-color: maroon;
+
 }
 
 .btn {
@@ -29,6 +55,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  
 }
 
 .btn-primary {
@@ -37,41 +64,69 @@
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #c67809;
   color: white;
 }
 
+
+
+
+.submit-btn:hover {
+  background-color: #5c0202;
+}
+
+
 .btn-edit {
-  background-color: #ffc107;
-  color: black;
-  margin-right: 5px;
+ padding: 6px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff5f5;
 }
 
 .btn-delete {
-  background-color: #dc3545;
-  color: white;
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff5f5;
+}
+.delete-btn:hover {
+  background-color: #fff5f5;
+}
+.edit-btn:hover {
+  background-color: #fff5f5;
 }
 
 .services-table-container {
-  overflow-x: auto;
+  overflow-x: hidden;
+  background-color: #fff5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 80%;
 }
 
 .services-table {
-  width: 100%;
+  width: 95%;
   border-collapse: collapse;
   margin-top: 10px;
 }
 
 .services-table th,
 .services-table td {
-  padding: 12px;
+  padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid rgb(243, 246, 246);
+  color:#6a0303 ;
+  background-color:  #fff5f5;
 }
 
 .services-table th {
-  background-color: #f8f9fa;
-  font-weight: bold;
+  background-color:#fff5f5 ;
+  color: #7F0404;
+  border-bottom: 2px solid #7F0404;
 }
 
 .description-cell {

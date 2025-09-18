@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import "../../Styles/Adminstyles/Navbar-styles.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+
+
+
 const AdminNav = () => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(true); // initially visible
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleLogout = () => {
-    // Add your logout logic here
-    // localStorage.removeItem("authToken");
+    // Logout logic here
     navigate("/login");
   };
 
@@ -18,7 +20,7 @@ const AdminNav = () => {
   };
 
   return (
-    <div className={`admin-nav ${isOpen ? "open" : "collapsed"}`}>
+    <nav className={`admin-nav ${isOpen ? "open" : "collapsed"}`}>
       <div className="nav-top">
         <GiHamburgerMenu
           className="hamburger-icon"
@@ -34,12 +36,14 @@ const AdminNav = () => {
       {isOpen && (
         <>
           <ul className="admin-nav-list">
+
             <li><Link to="/reservation">RESERVATIONS</Link></li>
             <li><Link to="/addhallsrooms">ROOMS & HALLS</Link></li>
-            <li><Link to="/admin/client-details">CLIENT DETAILS</Link></li>
-            <li><Link to="/admin/blog-posts">BLOG POSTS</Link></li>
-            <li><Link to="/admin/services">SERVICES</Link></li>
+            <li><Link to="/clientDetails">CLIENT DETAILS</Link></li>
+            <li><Link to="/blog">BLOG POSTS</Link></li>
+            <li><Link to="/services">SERVICES</Link></li>
             <li><Link to="/donations">DONATIONS</Link></li>
+
           </ul>
 
           <div className="admin-nav-logout">
@@ -47,7 +51,11 @@ const AdminNav = () => {
           </div>
         </>
       )}
-    </div>
+
+      <div className="admin-content">
+        
+      </div>
+    </nav>
   );
 };
 

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
+
+
 import { db } from '../../firebase';
 import { collection, getDocs, updateDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import '../../Styles/Adminstyles/Addhallsrooms.css';
 import AdminNav from './AdminNav';
 import AddHallsForm from './AddHallsForm';
 import AddRoomsForm from './AddRoomsForm';
+
 
 function AddHallsRooms() {
   const [halls, setHalls] = useState([]);
@@ -13,6 +17,7 @@ function AddHallsRooms() {
   const [filterRoomsStatus, setFilterRoomsStatus] = useState('all');
   const [searchHalls, setSearchHalls] = useState('');
   const [searchRooms, setSearchRooms] = useState('');
+
 
   //control popup
   const [showHallForm, setShowHallForm] = useState(false);
@@ -25,7 +30,7 @@ function AddHallsRooms() {
   // Pagination states
   const [currentHallsPage, setCurrentHallsPage] = useState(1);
   const [currentRoomsPage, setCurrentRoomsPage] = useState(1);
-  const rowsPerPage = 5;
+  const rowsPerPage = 4;
 
   useEffect(() => {
     // Real-time listener for halls
@@ -50,6 +55,7 @@ function AddHallsRooms() {
   }, []);
 
 
+
   const fetchHalls = async () => {
     const snap = await getDocs(collection(db, 'halls'));
     setHalls(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
@@ -63,12 +69,15 @@ function AddHallsRooms() {
   const handleDeleteHall = async (id) => {
     if (window.confirm('Are you sure you want to delete this hall?')) {
       await deleteDoc(doc(db, 'halls', id));
+
+
     }
   };
 
   const handleDeleteRoom = async (id) => {
     if (window.confirm('Are you sure you want to delete this room?')) {
       await deleteDoc(doc(db, 'rooms', id));
+
     }
   };
 
@@ -107,10 +116,12 @@ function AddHallsRooms() {
   const handleAddNewRoom = () => {
     setEditingRoom(null);
     setShowRoomForm(true);
+
   };
 
   const filteredHalls = halls.filter(h =>
     (filterHallsStatus === 'all' || h.status === filterHallsStatus) &&
+
     (searchHalls === '' || h.name.toLowerCase().includes(searchHalls.toLowerCase())))
   .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
 
@@ -131,18 +142,24 @@ function AddHallsRooms() {
   const currentRooms = filteredRooms.slice(indexOfFirstRoom, indexOfLastRoom);
   const totalRoomsPages = Math.ceil(filteredRooms.length / rowsPerPage);
 
+
   return (
     <div className="admin-layout">
       <AdminNav />
       <div className="content-container">
+
+
+
         {/* HALLS */}
         <section className="section-container">
           <h2 className="section-title">HALLS</h2>
           <div className="actions-row">
+
             <input
               type="search"
               value={searchHalls}
               placeholder="Search"
+
               onChange={e => {
                 setSearchHalls(e.target.value);
                 setCurrentHallsPage(1); 
@@ -152,20 +169,25 @@ function AddHallsRooms() {
             <button className="add-btn" onClick={handleAddNewHall}>
               ADD NEW
             </button>
+
           </div>
           <table className="data-table">
             <thead>
               <tr>
+
                 <th>Name</th>
                 <th>Capacity</th>
                 <th>Type</th>
                 <th>Extra Hrs</th>
+
                 <th>Image</th>
+
                 <th>Amount</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
+
               {currentHalls.length > 0 ? (
                 currentHalls.map(hall => (
                   <tr key={hall.id}>
@@ -173,8 +195,7 @@ function AddHallsRooms() {
                     <td>{hall.capacity}</td>
                     <td>{hall.type}</td>
                     <td>{hall.extraHrs}</td>
-                    <td className="url-cell">{hall.imageURL}</td>
-
+                    <td>{hall.imageURL ? ( <img  src={hall.imageURL}  alt={hall.name}  style={{ width: "80px", height: "60px", objectFit: "cover", borderRadius: "6px" }}   />  ) : (  "No Image"  )}</td>
                     <td>{hall.amount}</td>
                     <td>
                       <button onClick={() => handleEditHall(hall.id)} className="action-btn edit-btn">✏</button>
@@ -212,16 +233,19 @@ function AddHallsRooms() {
               </button>
             </div>
           )}
+
         </section>
 
         {/* ROOMS */}
         <section className="section-container" style={{ marginTop: '2.5rem' }}>
           <h2 className="section-title">ROOMS</h2>
           <div className="actions-row">
+
             <input
               type="search"
               value={searchRooms}
               placeholder="Search"
+
               onChange={e => {
                 setSearchRooms(e.target.value);
                 setCurrentRoomsPage(1); 
@@ -229,26 +253,30 @@ function AddHallsRooms() {
               className="search-input"
             />
             <button className="add-btn" onClick={handleAddNewRoom}>ADD NEW</button>
+
           </div>
           <table className="data-table">
             <thead>
               <tr>
+
                 <th>Name</th>
                 <th>Capacity</th>
                 <th>Type</th>
                 <th>Image</th>
+
                 <th>Amount</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
+
               {currentRooms.length > 0 ? (
                 currentRooms.map(room => (
                   <tr key={room.id}>
                     <td>{room.name}</td>
                     <td>{room.capacity}</td>
                     <td>{room.type}</td>
-                    <td className="url-cell">{room.imageURL}</td>
+                    <td> {room.imageURL ? ( <img  src={room.imageURL}  alt={room.name}  style={{ width: "80px", height: "60px", objectFit: "cover", borderRadius: "6px" }}   />  ) : (  "No Image"  )}</td>
                     <td>{room.amount}</td>
                     <td>
                       <button onClick={() => handleEditRoom(room.id)} className="action-btn edit-btn">✏</button>
@@ -258,7 +286,7 @@ function AddHallsRooms() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" style={{ textAlign: "center" }}>
+                  <td colSpan="8" style={{ textAlign: "center" }}>
                     No rooms found
                   </td>
                 </tr>
@@ -314,6 +342,7 @@ function AddHallsRooms() {
           </div>
         </div>
       )}
+
     </div>
   );
 }
