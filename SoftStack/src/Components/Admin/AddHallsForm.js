@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../firebase';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import '../../Styles/Adminstyles/addhallsrooms.css';
+import '../../Styles/Adminstyles/Addhallsrooms.css';
 
 function AddHallsForm({ onClose, editingHall }) {
 
