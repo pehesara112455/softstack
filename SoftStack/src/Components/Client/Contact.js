@@ -59,7 +59,7 @@ function Contact() {
         <div className="map-business-section">
           <iframe
             title="CEC Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.123456!2d79.964!3d7.021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCommunity%20Education%20Centre!5e0!3m2!1sen!2slk!4v1234567890"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8246037440604!2d79.94820567482247!3d6.911564493087923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2573a9abafe93%3A0x40e9ecbdc8eddc56!2sCommunity%20Education%20Centre!5e0!3m2!1sen!2slk!4v1758214441865!5m2!1sen!2slk"
             width="100%"
             height="250"
             style={{ border: 0 }}

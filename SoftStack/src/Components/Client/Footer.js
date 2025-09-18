@@ -12,7 +12,7 @@ function Footer (){
                     <h3>Contact Info</h3>
                     <p>No.117,, Malabe, Sri Lanka</p>
                     <p>0112 789 459 / 0777 666 272</p>
-                    <p>cec@sltne.lk</p>
+                    <p>cec@sltnet.lk</p>
                     <p>cecntc13@gmail.com</p>
                 </div>
                 <div className="quick-links">
