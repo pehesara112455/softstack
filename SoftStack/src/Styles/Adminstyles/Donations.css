@@ -130,7 +130,7 @@
   color: #d32f2f;
 }
 
-/* 🔹 Modal Overlay (dark background) */
+/* Modal Overlay (dark background) */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -144,7 +144,7 @@
   z-index: 2000;
 }
 
-/* 🔹 Modal Content (wrapper around .form-card) */
+/*Modal Content (wrapper around .form-card) */
 .modal-content {
   position: relative;
   background: transparent; /* form-card already has background */
@@ -153,7 +153,7 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* 🔹 Close Button (top-right corner) */
+/*Close Button (top-right corner) */
 .close-btn {
   position: absolute;
   top: -10px;
@@ -178,7 +178,7 @@
   color: #fff;
 }
 
-/* 🔹 Animation */
+/*Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
@@ -290,7 +290,7 @@
   background-color: #5c100f;
 }
 
-/* 🔹 Pagination */
+/* Pagination */
 .pagination {
   display: flex;
   justify-content: flex-end;
