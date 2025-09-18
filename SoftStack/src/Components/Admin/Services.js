@@ -10,7 +10,7 @@ import {
   orderBy 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage } from '../firebase'; // Your Firebase configuration
+import { db, storage } from '../../firebase'; 
 import '../../Styles/Adminstyles/Services.css';
 import AdminNav from './AdminNav';
 
@@ -201,8 +201,11 @@ const Services = () => {
   };
 
   return (
-    <div className="services-container">
+    <div className="services-container with-sidebar">
+    <div class="sidebar">
       <AdminNav/>
+    </div>
+    <div className="main-content">
       <div className='sss'>
          <div className="services-header">
         <h2>Service Management</h2>
@@ -308,7 +311,23 @@ const Services = () => {
           <div className="modal">
             <div className="modal-header">
               <h3>{editingService ? 'Edit Service' : 'Add New Service'}</h3>
-              <button className="close-btn" onClick={handleCloseModal}>×</button>
+              <button
+  className="close-btn"
+  type="button"
+  onClick={handleCloseModal}
+  style={{
+    position: 'absolute',
+    top: '12px',
+    right: '18px',
+    fontSize: '22px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  }}
+  aria-label="Close"
+>
+  ×
+</button>
             </div>
             <form onSubmit={handleSubmit} className="service-form">
               <div className="form-group">
@@ -392,6 +411,7 @@ const Services = () => {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };

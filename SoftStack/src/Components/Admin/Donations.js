@@ -113,7 +113,7 @@ function Donations() {
                         onClick={() => handleEdit(donation.id)}
                         className="action-btn edit-btn"
                       >
-                        ✏
+                        ✏️
                       </button>
                       <button
                         onClick={() => handleDelete(donation.id)}

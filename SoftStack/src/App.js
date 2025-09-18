@@ -4,8 +4,10 @@ import About from './Components/Client/About';
 import Reservation from './Components/Admin/Reservation';
 import ClientDetailsPage from './Components/Admin/ClientDetailsPage';
 import Addhallsrooms from './Components/Admin/Addhallsrooms';
-import EditReseation from './Components/Admin/EditReservation';
+import EditReservation from './Components/Admin/EditReservation';
 import Donations from './Components/Admin/Donations';
+import Services from './Components/Admin/Services';
+import Blog from './Components/Admin/Blog';
 
 function App() {
   return (
@@ -17,10 +19,12 @@ function App() {
           <Route path="/about" element={<About />} />
 
          <Route path="/reservation" element={<Reservation />} /> 
-<Route path="/client-details" element={<ClientDetailsPage />} /> 
+<Route path="/clientDetails" element={<ClientDetailsPage />} /> 
 <Route path="/EditReservation/:reservationId" element={<EditReservation />} />
  <Route path='/Addhallsrooms' element={<Addhallsrooms/>} />
    <Route path='/donations' element={<Donations/>} />
+   <Route path='/services' element={<Services/>} />
+   <Route path='/blog' element={<Blog />} />
 
         </Routes>
       

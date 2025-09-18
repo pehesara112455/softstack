@@ -64,13 +64,40 @@ function ClientModal({ onClose, initialData }) {
     }
   };
 
+  const handleClear = () => {
+  if (initialData) {
+    setForm({
+      companyName: initialData.companyName || '',
+      address: initialData.address || '',
+      type: initialData.type || '',
+      contactNumber: initialData.contactNumber || '',
+      email: initialData.email || '',
+      contactPerson: initialData.contactPerson || '',
+      nic: initialData.nic || '',
+      personContactNumber: initialData.personContactNumber || ''
+    });
+  } else {
+    setForm({
+      companyName: '',
+      address: '',
+      type: '',
+      contactNumber: '',
+      email: '',
+      contactPerson: '',
+      nic: '',
+      personContactNumber: ''
+    });
+  }
+};
+
+
 
 
 
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
+      <div className="modal-content" style={{ backgroundColor: 'rgba(255, 255, 255, 1), 0.5)' }}>
 
       <button
   className="close-btn"

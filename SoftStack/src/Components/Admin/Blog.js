@@ -10,7 +10,7 @@ import {
   orderBy 
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from '../firebase';
+import { db, storage } from '../../firebase';
 import '../../Styles/Adminstyles/Blogs.css';
 import AdminNav from './AdminNav';
 
@@ -289,7 +289,23 @@ const Blog = () => {
           <div className="blog-form-modal">
             <div className="modal-header">
               <h3>{editingBlog ? 'EDIT BLOG' : 'ADD NEW BLOG'}</h3>
-              <button className="close-btn" onClick={handleCloseForm}>×</button>
+              <button
+  className="close-btn"
+  type="button"
+  onClick={handleCloseForm}
+  style={{
+    position: 'absolute',
+    top: '12px',
+    right: '18px',
+    fontSize: '22px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer'
+  }}
+  aria-label="Close"
+>
+  ×
+</button>
             </div>
             
             <form onSubmit={handleSubmit} className="blog-form">
