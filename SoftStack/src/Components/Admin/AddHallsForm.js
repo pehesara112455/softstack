@@ -13,7 +13,6 @@ function AddHallsForm({ onClose, editingHall }) {
     type: '',
     extraHrs: '',
     amount: '',
-
     imageFile: null,
     imageURL: ''
   });
@@ -33,7 +32,8 @@ function AddHallsForm({ onClose, editingHall }) {
   }, [editingHall]);
 
   const uploadImage = async (file) => {
-  const storageRef = ref(storage, `hallsrooms/${Date.now()}_${file.name}`);
+  const storageRef = ref(storage, `halls/${Date.now()}_${file.name}`);
+  uploadBytes(storageRef, file);
   await uploadBytes(storageRef, file);
   return await getDownloadURL(storageRef);
 };
@@ -91,28 +91,6 @@ function AddHallsForm({ onClose, editingHall }) {
   };
 
   return (
-
-  <div className="form-container">
-  <button
-  className="close-btn"
-  type="button"
-  onClick={onClose}
-  style={{
-    position: 'absolute',
-    top: '12px',
-    right: '18px',
-    fontSize: '22px',
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer'
-  }}
-  aria-label="Close"
->
-  ×
-</button>
-
-    
-
     <form className="form-card" onSubmit={submitHall} noValidate>
       <h2 className="form-title">{editingHall ? "EDIT HALL" : "ADD A NEW HALL"}</h2>
 
@@ -152,7 +130,6 @@ function AddHallsForm({ onClose, editingHall }) {
         <button type="submit" className="submit-btn">{editingHall ? "Update" : "Submit"}</button>
       </div>
     </form>
-    </div>
   );
 
 }
